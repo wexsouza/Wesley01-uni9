@@ -12,6 +12,15 @@
             font-family: Arial, Helvetica, sans-serif;
             background-image: linear-gradient(to right, rgb(8, 8, 8), rgb(77, 179, 93),rgb(1, 1, 1));
         }
+        .media-wrapper{
+            display: flex;
+            align-items: 100px;
+            justify-content: 100px; /* centraliza o conjunto (avatar + vídeo) */
+            gap: 24px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        } 
+
         #menu {
             display: none;
 
@@ -172,7 +181,15 @@
     
     <h1 class="html">Como Baixar o VS Code</h1>
      <p class="siga">Gabriel Caputti <br>Estudante de ADM <br> <div class="insta"><a href="https://www.instagram.com/gabrielcaputti/" alt="insta"><button>Instagram</button></div></a></p>
-   
+
+     <div class="media-wrapper">
+        <div>
+             <img style="width: 150px;" src="image.png" alt="Gabriel Caputti">
++            <div class="avatar-name">Gabriel Caputti</div>
+        </div>
+     </div>   
+
+
     <div class="img-video">
         <!-- 🔹 Vídeo do YouTube -->
         <iframe width="900" height="500" src="https://www.youtube.com/embed/6IS7wvU1_vg?si=MDqz-tDKDP1VdHMv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

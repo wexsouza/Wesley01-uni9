@@ -5,196 +5,250 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grupo 03 Uninove</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-       @charset "UTF-8";
+   <style>
+@charset "UTF-8";
 
-        body{
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background-image: linear-gradient(to right, rgb(8, 8, 8), rgb(77, 179, 93),rgb(1, 1, 1));
-        }
-        #menu {
-            display: none;
+/* ======= ESTILO GERAL ======= */
+body {
+  background-color: rgb(0, 0, 0);
+  background-image:
+    radial-gradient(circle at top left, rgba(18, 39, 224, 0.057), transparent 70%),
+    radial-gradient(circle at bottom right, rgba(99, 6, 6, 0.247), transparent 70%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  color: white;
+}
 
-        }
-        .botao{
-            
-            position: fixed;
-            top: 50px;
-            left: 20px;
-            width: 30px;
-            height: 22px;
-            cursor: pointer;
-            z-index: 1002;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .botao span {
-            display: block;
-            height: 3px;
-            width: 100%;
-            background: #1a2041;
-            border-radius: 3px;
-            transition: 0.8s;
+/* ======= MENU HAMBURGUER ======= */
+#menu {
+  display: none;
+}
 
-        }
-        .comeco{
-            position: fixed;
-            top: 0;
-            left: -250px;
-            width: 250px;
-            height: 100%;
-            background: #04010c;
-            color: rgb(18, 192, 29);
-            transition: left 0.8s ease;
-            padding-top: 60px;
-            z-index: 1001;
+.botao {
+  position: fixed;
+  top: 50px;
+  left: 20px;
+  width: 30px;
+  height: 22px;
+  cursor: pointer;
+  z-index: 1002;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
-        }
-        .comeco ul, li{
-            color: rgb(252, 252, 252);
-            padding: 15px 20px;
-            border-bottom: 1px solid rgba(232, 219, 219, 0.2);
+.botao span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: #ebecf0;
+  border-radius: 3px;
+  transition: 0.8s;
+}
+
+/* ======= MENU LATERAL MODERNO ======= */
+.comeco {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(10, 10, 20, 0.95), rgba(5, 5, 15, 0.85));
+  backdrop-filter: blur(10px);
+  box-shadow: 2px 0 15px rgba(2, 144, 245, 0.829);
+  border-right: 1px solid rgba(0, 150, 255, 0.15);
+  transition: left 0.8s ease;
+  padding-top: 60px;
+  z-index: 1001;
+  overflow-y: auto;
+}
+
+.comeco p {
+  font-family: 'Poppins', sans-serif;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 18px;
+  margin: 10px 20px;
+  border-bottom: 1px solid rgba(0, 150, 255, 0.2);
+  padding-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ======= ITENS DO MENU ======= */
+.comeco ul li {
+  list-style: none;
+  padding: 12px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.comeco ul li a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.75);
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+/* ======= EFEITO AO PASSAR O MOUSE ======= */
+.comeco ul li:hover {
+  background: rgba(238, 241, 243, 0.865);
+  transform: translateX(5px);
+  border-left: 3px solid rgba(246, 247, 248, 0.8);
+}
+
+.comeco ul li:hover a {
+  color: #eaf0f2;
+  text-shadow: 0 0 8px rgba(228, 231, 232, 0.6);
+}
+
+/* ======= SCROLLBAR ======= */
+.comeco::-webkit-scrollbar {
+  width: 6px;
+}
+
+.comeco::-webkit-scrollbar-thumb {
+  background: rgb(236, 237, 237);
+  border-radius: 4px;
+}
+
+.comeco::-webkit-scrollbar-thumb:hover {
+  background: rgba(234, 236, 238, 0.6);
+}
+
+/* ======= OVERLAY ======= */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+}
+
+/* ======= ANIMAÇÃO DO MENU AO ABRIR ======= */
+#menu:checked ~ .comeco {
+  left: 0;
+}
+
+#menu:checked ~ .overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ======= ÍCONE DE MENU (X) ======= */
+#menu:checked + .botao span:nth-child(1) {
+  transform: rotate(45deg) translateY(13px);
+  background: white;
+}
+
+#menu:checked + .botao span:nth-child(2) {
+  opacity: 0;
+}
+
+#menu:checked + .botao span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-13px);
+  background: white;
+}
+
+/* ======= LINKS ======= */
+a {
+  color: rgb(243, 236, 236);
+  text-indent: none;
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(236, 229, 229);
+}
+
+a:active {
+  color: rgb(239, 239, 228);
+}
+
+/* ======= OUTROS ELEMENTOS DA PÁGINA ======= */
+.img {
+  padding-top: 240px;
+  text-align: center;
+}
+
+video {
+  text-align: center;
+}
+
+.img-video {
+  text-align: center;
+  padding-top: 2px;
+  padding-bottom: 0px;
+}
+
+.links a {
+  padding: 650px;
+  font-size: 50px;
+}
+
+.html {
+  text-align: center;
+  padding-top: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  transition: .3s;
+}
+
+.html:hover {
+  transition: .3s;
+  color: black;
+}
+
+.texto {
+  padding-left: 650px;
+}
+
+.paragrafi {
+  text-align: center;
+  color: rgb(236, 234, 241);
+}
+
+/* ======= TÍTULO WELCOME ======= */
+.welcome {
+  color: #fff;
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  margin-top: 90px;
+  text-shadow:
+    0 0 8px rgba(0, 149, 255, 0.836),
+    0 0 16px rgba(0, 149, 255, 0.742);
+  font-weight: 700;
+}
+
+.siga {
+  text-align: center;
+}
+
+.insta {
+  text-align: center;
+}
+</style>
 
 
-        }
-        .comeco ul,li:hover{
-            color: black;
-            transition: 0.2s;
-            background: rgba(12, 180, 231, 0.1);
-            cursor: pointer;
-
-
-        }
-         .comeco ul,li:active{
-            color: rgb(209, 209, 6);
-         }
-        .overlay{
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-            z-index: 1000;
-
-        }
-        #menu:checked ~ .comeco{
-            left: 0;
-
-        }
-        #menu:checked ~ .overlay{
-            opacity: 1;
-            pointer-events: auto;
-        }
-        #menu:checked + .botao span:nth-child(1){
-            transform: rotate(45deg) translateY(13px);
-            background: white;
-        }
-                #menu:checked + .botao span:nth-child(2){
-            opacity: 0;
-        }
-                #menu:checked + .botao span:nth-child(3){
-            transform: rotate(-45deg) translateY(-13px);
-            background: white;
-        }
-        a{
-            color: rgb(7, 182, 13);
-            text-indent: none;
-            text-decoration: none;
-            
-        }
-        a:hover{
-            color: black;
-        }
-        a:active{
-            color: yellow;
-        }
-        .img {
-           
-            padding-top: 240px;
-            text-align: center;
-             
-           
-        }
-        video {
-            text-align: center;
-
-        }
-        .img-video{
-            text-align: center;
-            padding-top: 2px;
-            padding-bottom: 0px;
-        }
-        .links a {
-            
-            padding: 650px;
-            font-size: 50px;
-            
-            
-        }
-        .html{
-            text-align: center;
-            padding-top: 20px;
-            font-family: Arial, Helvetica, sans-serif;
-            color: white;
-            transition: .3s;
-        }
-        .html:hover{
-            transition: .3s;
-            color: black;
-        }
-        .texto{
-           
-            padding-left: 650px;
-        }
-           .paragrafo {
-            text-align: center;
-            color: white;
-        }
-
-        .welcome {
-            text-align: center;
-            margin-top: 90px;
-        }
-        .siga {
-            text-align: center;   
-        }
-        .insta {
-            text-align: center;
-        }
-    </style>
 </head>
 <body>   
     <div class="welcome">
-    <h2>👋 Seja bem-vindo(a) ao Curso de Front-End!</h2>
-    <h3>Grupo 3 - Uninove</h3>
-    <p>Estamos felizes em ter você no curso de <strong>Front-End</strong>.</p>
-    
-    <div class="integrantes">
-        <h4>Integrantes do Grupo 3:</h4>
-        <ul>
-            <li>Gabrela Caputti - RA: 922102932</li>
-            <li>Gladson Rego - RA: 922102933</li>
-            <li>Gabriel Caputti - RA: 922104150</li>
-            <li>Mariana Gerlania - RA: 922102411</li>
-            <li>Wesley S. - RA: 922100496</li>
-            <li>Gabriel Martiniano- RA: 922105579</li>
-            <li>Lucas R. - RA: 922100537</li>
-            <li>Eduardo F. - RA: 922101874</li>
-            <li>Sabrina Melo- RA: 922100325</li>
-            <li>Raul Gaspar - RA: 922106207</li>
-        </ul>
+        <h2>Curso de Front-End!</h2>
+        <h3>Grupo 3 - Uninove</h3>
     </div>
 
-    <p class="frase">“Aqui começa sua jornada no desenvolvimento Front-End 🚀”</p>
-</div>
-
-
+    <div class="paragrafi">
+        <p>Estamos felizes em ter você no curso de <strong>Front-End</strong>.</p>
+        <p class="frase"> “Aqui começa sua jornada no desenvolvimento Front-End 🚀”</p>
+    </div>
     
     <input type="checkbox" name="" id="menu">
     <label for="menu" class="botao">
@@ -204,20 +258,22 @@
     </label>
     <div class="comeco">
         <ul> <p>Menu</p>
-            <li> <a href="https://wesley01-uni9.vercel.app/">Participantes</a></li>
+            <li> <a href="https://wesley01-uni9.vercel.app/">Inicio</a></li>
             <li> <a href="gabis.html">Welcome</a></li>
-            <li><a href="martin.html">HTML</a></li>
-            <li><a href="index04.html">Complemento HTML</a></li>
-            <li><a href="index05.html">CSS</a></li>
-            <li><a href="index04.html">Complemento CSS</a></li>
-            <li><a href="caputti.html">Como Baixar</a></li>
-            <li><a href="raul.html">VS Code</a></li>
-            <li><a href="index02.html">Aula HTML/CSS/GPT</a></li>
-            <li><a href="index04.html">Atividade</a></li>
+            <li><a href="martin.html">Modulo 01 - HTML</a></li>
+            <li><a href="index04.html">Modulo 02 - Complemento HTML</a></li>
+            <li><a href="index05.html">Modulo 03 - CSS</a></li>
+            <li><a href="index04.html">Modulo 04 - Complemento CSS</a></li>
+            <li><a href="caputti.html">Modulo 05 - Como Baixar</a></li>
+            <li><a href="raul.html">Modulo 06 - VS Code</a></li>
+            <li><a href="index02.html">Modulo 07 - Aula HTML/CSS/GPT</a></li>
+            <li><a href="index04.html">Modulo 08 - Atividade</a></li>
         </ul>
         </ul>
     </div>
     <div class="overlay"></div>
     <img src="" alt="">
+    
+
 </body>
 </html>
