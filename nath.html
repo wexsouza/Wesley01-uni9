@@ -20,7 +20,7 @@ body {
   color: white;
 }
 
-/* ======= MENU HAMBURGUER ======= */
+/* ======= MENU HAMBURGUER E BOTÃO ======= */
 #menu {
   display: none;
 }
@@ -47,7 +47,7 @@ body {
   transition: 0.8s;
 }
 
-/* ======= MENU LATERAL MODERNO ======= */
+/* ======= MENU LATERAL MODERNO (COMECO) ======= */
 .comeco {
   position: fixed;
   top: 0;
@@ -75,7 +75,7 @@ body {
   letter-spacing: 1px;
 }
 
-/* ======= ITENS DO MENU (NÍVEL SUPERIOR) ======= */
+/* ITENS DE MENU (NÍVEL SUPERIOR) */
 .comeco ul li {
   list-style: none;
   padding: 12px 20px;
@@ -92,9 +92,9 @@ body {
   transition: all 0.3s ease;
 }
 
-/* ======= EFEITO AO PASSAR O MOUSE (NÍVEL SUPERIOR) ======= */
+/* EFEITO AO PASSAR O MOUSE (NÍVEL SUPERIOR) */
 .comeco ul li:hover {
-  background: rgba(238, 241, 243, 0.05); /* Ajustei para um tom mais discreto com o fundo escuro */
+  background: rgba(238, 241, 243, 0.05);
   transform: translateX(5px);
   border-left: 3px solid rgba(246, 247, 248, 0.8);
 }
@@ -104,19 +104,13 @@ body {
   text-shadow: 0 0 8px rgba(228, 231, 232, 0.6);
 }
 
-/*
- * ========================================
- * === NOVO CSS PARA SUBMENUS (Subtópicos) ==
- * ========================================
- */
+/* === CSS PARA SUBMENUS (Subtópicos) === */
 .has-submenu {
-    cursor: pointer; /* Indica que é clicável */
+    cursor: pointer;
     position: relative;
-    /* Remove a cor de fundo do hover do li pai para evitar conflito com o fundo do submenu */
 }
 
 .submenu-title {
-    /* Garante que o título principal do submenu se parece com os outros links */
     display: block;
     color: rgba(255, 255, 255, 0.75) !important;
 }
@@ -131,37 +125,46 @@ body {
     list-style: none;
     padding: 0;
     margin: 0;
-    /* Estilo para diferenciar o submenu */
     background: rgba(0, 0, 0, 0.25); 
-    /* Altura 0 para esconder o submenu (o JS controla a classe .submenu-open) */
     max-height: 0;
-    transition: max-height 0.4s ease-out; /* Animação suave */
+    transition: max-height 0.4s ease-out;
     overflow: hidden;
     border-top: 1px solid rgba(0, 150, 255, 0.1);
 }
 
 .submenu li {
-    padding: 8px 20px 8px 35px; /* Mais indentação para diferenciar */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.03); /* Linha mais sutil para sub-itens */
+    padding: 8px 20px 8px 35px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
 }
 
 /* Estilo de hover do item do submenu (sobrescreve o estilo principal) */
 .submenu li:hover {
     background: rgba(2, 144, 245, 0.15);
-    transform: none; /* Remove a translação do LI principal */
-    border-left: none; /* Remove o border-left do LI principal */
+    transform: none;
+    border-left: none;
 }
 
 /* CLASSE USADA PELO JAVASCRIPT PARA ABRIR O SUBMENU */
 .submenu-open .submenu {
-    max-height: 500px; /* Valor grande o suficiente para expandir */
+    max-height: 500px;
 }
 
-/*
- * ========================================
- * === FIM DO NOVO CSS PARA SUBMENUS ========
- * ========================================
- */
+/* DESTAQUE PARA ITEM ATIVO */
+.comeco ul li a.active, .comeco ul li a.active:hover {
+    color: rgb(245, 203, 73) !important; 
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(245, 203, 73, 0.7);
+}
+
+.comeco ul li.active-parent {
+    border-left: 3px solid rgb(245, 203, 73); 
+    background: rgba(245, 203, 73, 0.05);
+}
+
+.comeco ul li.active-parent .submenu {
+    max-height: 500px; 
+}
+/* === FIM DO CSS PARA SUBMENUS === */
 
 
 /* ======= SCROLLBAR ======= */
@@ -217,10 +220,9 @@ body {
   background: white;
 }
 
-/* ======= LINKS GERAIS ======= */
+/* ======= LINKS GERAIS (fora do menu) ======= */
 a {
   color: rgb(243, 236, 236);
-  text-indent: none;
   text-decoration: none;
 }
 
@@ -230,49 +232,6 @@ a:hover {
 
 a:active {
   color: rgb(239, 239, 228);
-}
-
-/* ======= OUTROS ELEMENTOS DA PÁGINA ======= */
-.img {
-  padding-top: 240px;
-  text-align: center;
-}
-
-video {
-  text-align: center;
-}
-
-.img-video {
-  text-align: center;
-  padding-top: 2px;
-  padding-bottom: 0px;
-}
-
-.links a {
-  padding: 650px;
-  font-size: 50px;
-}
-
-.html {
-  text-align: center;
-  padding-top: 20px;
-  font-family: Arial, Helvetica, sans-serif;
-  color: white;
-  transition: .3s;
-}
-
-.html:hover {
-  transition: .3s;
-  color: black;
-}
-
-.texto {
-  padding-left: 650px;
-}
-
-.paragrafi {
-  text-align: center;
-  color: rgb(236, 234, 241);
 }
 
 /* ======= TÍTULO WELCOME ======= */
@@ -288,26 +247,122 @@ video {
   font-weight: 700;
 }
 
-.siga {
-  text-align: center;
+/* ======= SEÇÃO DE VÍDEO E CARD DE PERFIL (FLEXBOX) ======= */
+.video-e-info-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px; 
+    padding-top: 20px;
+    padding-bottom: 20px;
+    flex-wrap: wrap; /* Para responsividade */
 }
 
-.insta {
+.video-wrapper {
+    /* Mantenha o vídeo responsivo, se necessário */
+    max-width: 800px; /* Largura máxima do vídeo */
+}
+
+.video-wrapper iframe {
+    max-width: 100%; /* Garante que não ultrapasse a largura do container */
+    height: 500px;
+    /* Adicione um media query se quiser ajustar a altura em mobile */
+}
+
+/* Estilo do Card de Perfil */
+.profile-card {
+    background: linear-gradient(135deg, rgba(2, 144, 245, 0.1), rgba(99, 6, 6, 0.1));
+    border: 1px solid rgba(0, 150, 255, 0.2);
+    border-radius: 15px;
+    padding: 20px;
+    width: 280px; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    backdrop-filter: blur(5px);
+    font-size: 20;
+}
+
+.profile-pic {
+    width: 120px; 
+    height: 120px;
+    border-radius: 50%; 
+    object-fit: cover; 
+    border: 3px solid rgba(0, 150, 255, 0.6); 
+    margin-bottom: 15px;
+    box-shadow: 0 0 10px rgba(0, 150, 255, 0.4);
+}
+
+.profile-name {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 8px;
+    text-shadow: 0 0 5px rgba(0, 150, 255, 0.5);
+}
+
+.profile-bio {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.instagram-link {
+    display: inline-flex; 
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.instagram-link:hover {
+    color: #f77737;
+}
+
+.instagram-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+    border-radius: 5px;
+}
+/* === FIM DO CSS DE VÍDEO E CARD === */
+
+
+/* OUTROS ELEMENTOS (MANTIDOS) */
+.paragrafi {
   text-align: center;
+  color: rgb(236, 234, 241);
 }
 </style>
 
-
 </head>
-<body>   
-    <div class="welcome">
-        <h2>Curso de Front-End!</h2>
+<body>    
 
+    <div class="welcome">
+        <h2>CSS</h2>
     </div>
 
+    <div class="video-e-info-container">
+        
+        <div class="video-wrapper">
+        <iframe width="800" height="500" src="https://www.youtube.com/embed/0Re16wAXVxA?si=dY4RJ90VKcgWbFV4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+
+        <div class="profile-card">
+            <img src="nath.jpeg" alt="Foto de Perfil" class="profile-pic">
+            <h2>Aluna:<br>Nathalia Castanha</h2>
+            <p class="profile-bio">Apresentação CSS. <a href="https://www.hostinger.com/br/tutoriais/o-que-e-css-guia-basico-de-css"><br><br><button>Click aqui</button></a></p>
+            <a href="https://www.instagram.com/nathcastanha_/" target="_blank" class="instagram-link">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="instagram-icon">
+                Instagram
+            </a>
+        </div>
+    </div>
     <div class="paragrafi">
-        <p>Estamos felizes em ter você no curso de <strong>Front-End</strong>.</p>
-        <p class="frase"> “Aqui começa sua jornada no desenvolvimento Front-End 🚀”</p>
+        <p class="frase"> “Everything is possible if you believe 🚀”</p>
     </div>
     
     <input type="checkbox" name="" id="menu">
@@ -320,7 +375,7 @@ video {
     <div class="comeco">
         <ul> 
             <p>Menu</p>
-            <li> <a href="https://wesley01-uni9.vercel.app/">Inicio</a></li>
+           <li> <a href="https://wesley01-uni9.vercel.app/">Inicio</a></li>
             <li> <a href="gabis.html">Welcome</a></li>
 
             <li class="has-submenu">
@@ -355,23 +410,41 @@ video {
     <img src="" alt="">
     
     <script>
-        // Seleciona todos os itens da lista que têm a classe 'has-submenu'
-        const menuItems = document.querySelectorAll('.has-submenu');
+        // === Lógica de Destaque do Link Ativo ===
+        function highlightActiveLink() {
+            const currentPath = window.location.pathname.split('/').pop() || 'gabis.html';
 
-        menuItems.forEach(item => {
-            // Adiciona um "ouvinte" de evento de clique a cada item principal
-            item.addEventListener('click', function(event) {
-                // Impede que o clique seja considerado se o usuário clicar
-                // diretamente em um link dentro do submenu aninhado.
-                if (!event.target.closest('.submenu a')) {
-                    // Impede o comportamento padrão (navegar para '#')
-                    event.preventDefault(); 
-                    
-                    // Alterna a classe 'submenu-open' no item principal (li)
-                    // que fará o CSS abrir ou fechar o submenu aninhado.
-                    this.classList.toggle('submenu-open');
+            document.querySelectorAll('.comeco a').forEach(link => {
+                const linkPath = link.getAttribute('href').split('/').pop();
+                
+                if (linkPath === currentPath) {
+                    link.classList.add('active'); 
+
+                    const parentLi = link.closest('.has-submenu');
+                    if (parentLi) {
+                        parentLi.classList.add('active-parent');
+                        parentLi.classList.add('submenu-open'); 
+                    }
                 }
             });
+        }
+
+        // === Lógica de Abrir/Fechar Submenu ===
+        function setupSubmenuToggle() {
+            const submenuTitles = document.querySelectorAll('.submenu-title');
+
+            submenuTitles.forEach(title => {
+                title.addEventListener('click', function(event) {
+                    event.preventDefault(); 
+                    const parentLi = this.closest('.has-submenu');
+                    parentLi.classList.toggle('submenu-open');
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            highlightActiveLink();
+            setupSubmenuToggle();
         });
     </script>
     </body>

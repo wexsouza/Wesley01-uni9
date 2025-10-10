@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 02 - Complemento CSS</title>
+    <link rel="stylesheet" href="style.css"> 
+    <style>
+@charset "UTF-8";
+
+/* ==================================================================================================== */
+/* NOTA: TODO O CSS DESTE BLOCO É IDÊNTICO AO DO COMPLEMENTO HTML, APENAS COPIE-O NOVAMENTE PARA CÁ. */
+/* ==================================================================================================== */
+
+/* ======= ESTILO GERAL DO CORPO ======= */
+body {
+  background-color: rgb(0, 0, 0);
+  background-image:
+    radial-gradient(circle at top left, rgba(18, 39, 224, 0.057), transparent 70%),
+    radial-gradient(circle at bottom right, rgba(99, 6, 6, 0.247), transparent 70%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  color: white;
+}
+
+/* ======= MENU HAMBURGUER E BOTÃO (MANTIDOS) ======= */
+#menu {
+  display: none;
+}
+
+.botao {
+  position: fixed;
+  top: 50px;
+  left: 20px;
+  width: 30px;
+  height: 22px;
+  cursor: pointer;
+  z-index: 1002;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.botao span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: #ebecf0;
+  border-radius: 3px;
+  transition: 0.8s;
+}
+
+/* ======= MENU LATERAL MODERNO (COMECO) (MANTIDOS) ======= */
+.comeco {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(10, 10, 20, 0.95), rgba(5, 5, 15, 0.85));
+  backdrop-filter: blur(10px);
+  box-shadow: 2px 0 15px rgba(2, 144, 245, 0.829);
+  border-right: 1px solid rgba(0, 150, 255, 0.15);
+  transition: left 0.8s ease;
+  padding-top: 60px;
+  z-index: 1001;
+  overflow-y: auto;
+}
+
+.comeco p {
+  font-family: 'Poppins', sans-serif;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 18px;
+  margin: 10px 20px;
+  border-bottom: 1px solid rgba(0, 150, 255, 0.2);
+  padding-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ITENS DE MENU E SUBMENUS (MANTIDOS) */
+.comeco ul li {
+  list-style: none;
+  padding: 12px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.comeco ul li a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.75);
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.comeco ul li:hover {
+  background: rgba(238, 241, 243, 0.05);
+  transform: translateX(5px);
+  border-left: 3px solid rgba(246, 247, 248, 0.8);
+}
+
+.comeco ul li:hover a {
+  color: #eaf0f2;
+  text-shadow: 0 0 8px rgba(228, 231, 232, 0.6);
+}
+
+.has-submenu { cursor: pointer; position: relative; }
+.submenu-title { display: block; color: rgba(255, 255, 255, 0.75) !important; }
+.has-submenu:hover .submenu-title { color: rgba(255, 255, 255, 0.75) !important; text-shadow: none !important; }
+.submenu { list-style: none; padding: 0; margin: 0; background: rgba(0, 0, 0, 0.25); max-height: 0; transition: max-height 0.4s ease-out; overflow: hidden; border-top: 1px solid rgba(0, 150, 255, 0.1); }
+.submenu li { padding: 8px 20px 8px 35px; border-bottom: 1px solid rgba(255, 255, 255, 0.03); }
+.submenu li:hover { background: rgba(2, 144, 245, 0.15); transform: none; border-left: none; }
+.submenu-open .submenu { max-height: 500px; }
+.comeco ul li a.active, .comeco ul li a.active:hover { color: rgb(245, 203, 73) !important; font-weight: bold; text-shadow: 0 0 10px rgba(245, 203, 73, 0.7); }
+.comeco ul li.active-parent { border-left: 3px solid rgb(245, 203, 73); background: rgba(245, 203, 73, 0.05); }
+.comeco ul li.active-parent .submenu { max-height: 500px; }
+
+
+/* SCROLLBAR, OVERLAY E ANIMAÇÕES (MANTIDOS) */
+.comeco::-webkit-scrollbar { width: 6px; }
+.comeco::-webkit-scrollbar-thumb { background: rgb(236, 237, 237); border-radius: 4px; }
+.comeco::-webkit-scrollbar-thumb:hover { background: rgba(234, 236, 238, 0.6); }
+.overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); opacity: 0; pointer-events: none; transition: opacity 0.3s ease; z-index: 1000; }
+#menu:checked ~ .comeco { left: 0; }
+#menu:checked ~ .overlay { opacity: 1; pointer-events: auto; }
+#menu:checked + .botao span:nth-child(1) { transform: rotate(45deg) translateY(13px); background: white; }
+#menu:checked + .botao span:nth-child(2) { opacity: 0; }
+#menu:checked + .botao span:nth-child(3) { transform: rotate(-45deg) translateY(-13px); background: white; }
+a { color: rgb(243, 236, 236); text-decoration: none; }
+a:hover { color: rgb(236, 229, 229); }
+a:active { color: rgb(239, 239, 228); }
+
+/* TÍTULO WELCOME (ADAPTADO) */
+.welcome {
+  color: #fff;
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  margin-top: 90px;
+  text-shadow:
+    0 0 8px rgba(0, 149, 255, 0.836),
+    0 0 16px rgba(0, 149, 255, 0.742);
+  font-weight: 700;
+}
+
+/* OUTROS ELEMENTOS (MANTIDOS) */
+.paragrafi {
+  text-align: center;
+  color: rgb(236, 234, 241);
+  padding: 0 50px;
+}
+
+/* === NOVO CSS PARA CONTEÚDO (Módulo CSS) === */
+.content-section {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.info-card {
+    background: linear-gradient(135deg, rgba(2, 144, 245, 0.1), rgba(99, 6, 6, 0.1));
+    border: 1px solid rgba(0, 150, 255, 0.2);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.info-card h3 {
+    color: rgb(245, 203, 73); 
+    border-bottom: 2px solid rgba(245, 203, 73, 0.4);
+    padding-bottom: 5px;
+    margin-top: 0;
+}
+
+.info-card p, .info-card li {
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.code-block {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-left: 5px solid #0099ff;
+    padding: 10px 15px;
+    margin: 15px 0;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    color: #a9f0ff;
+}
+</style>
+
+</head>
+<body>    
+
+    <div class="welcome">
+        <h2>Complemento: Fundamentos do CSS Avançado</h2>
+    </div>
+
+    <div class="content-section">
+        
+        <div class="info-card">
+            <h3>Entendendo o Box Model (Modelo de Caixa)</h3>
+            <p>Tudo o que você vê em uma página HTML é uma caixa. Dominar o Box Model é a chave do CSS. Lembre-se desta ordem de fora para dentro:</p>
+            <ul>
+                <li>**Margin:** Espaço **externo** da caixa (afasta a caixa de outras caixas).</li>
+                <li>**Border:** A linha que envolve o conteúdo e o padding.</li>
+                <li>**Padding:** Espaço **interno** da caixa (afasta o conteúdo da borda).</li>
+                <li>**Content:** O conteúdo real (texto, imagem, etc.).</li>
+            </ul>
+        </div>
+
+        <div class="info-card">
+            <h3>Flexbox e Grid: Como Posicionar TUDO</h3>
+            <p>Pare de usar `float` e `position: absolute` para layout principal! Use os sistemas modernos:</p>
+            <ul>
+                <li>**Flexbox (Display: flex):** Ideal para alinhar itens em **uma dimensão** (linha OU coluna). Perfeito para barras de navegação ou alinhar um item no centro.</li>
+                <li>**Grid (Display: grid):** Ideal para alinhar itens em **duas dimensões** (linhas E colunas). Perfeito para layouts complexos de página inteira (cabeçalho, barra lateral, conteúdo, rodapé).</li>
+            </ul>
+            <p>Se precisar centralizar algo horizontalmente em uma linha com Flexbox:</p>
+            <div class="code-block">
+                .container { display: flex; justify-content: center; }
+            </div>
+        </div>
+
+        <div class="info-card">
+            <h3>Prioridade de Estilos (Cascata e Especificidade)</h3>
+            <p>Se dois estilos tentam colorir o mesmo texto, o CSS decide quem vence seguindo esta ordem (do mais forte ao mais fraco):</p>
+            <ol>
+                <li>**Estilo Inline** (`&lt;p style="..."&gt;`): Vence quase sempre.</li>
+                <li>**ID** (`#id-nome`): Muito forte. Use com moderação.</li>
+                <li>**Classe** (`.nome-classe`) e Atributos (`[type="text"]`): Nível médio. Use para a maioria dos estilos.</li>
+                <li>**Tags** (`p`, `h1`, `div`): Nível mais fraco.</li>
+            </ol>
+            <p>Use classes sempre que possível para manter o código limpo e flexível.</p>
+        </div>
+    </div>
+    
+    <input type="checkbox" name="" id="menu">
+    <label for="menu" class="botao">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+
+    <div class="comeco">
+        <ul> 
+            <p>Menu</p>
+            <li> <a href="https://wesley01-uni9.vercel.app/">Inicio</a></li>
+            <li> <a href="gabis.html">Welcome</a></li>
+
+            <li class="has-submenu">
+                <a href="#" class="submenu-title">Modulo 01 - HTML/CSS 👇</a>
+                <ul class="submenu">
+                    <li><a href="martin.html">Módulo 01 - HTML</a></li>
+                    <li><a href="complemento.html">Módulo 01 - Complemento HTML</a></li>
+                </ul>
+            </li>
+
+            <li class="has-submenu">
+                <a href="#" class="submenu-title">Modulo 02 - CSS Avançado 👇</a>
+                <ul class="submenu">
+                    <li><a href="nath.html">Módulo 02 - CSS</a></li>
+                    <li><a href="complementocss.html">Módulo 02 - Complemento CSS</a></li>
+                </ul>
+            </li>
+
+            <li class="has-submenu">
+                <a href="#" class="submenu-title">Modulo 03 - Ferramentas 👇</a>
+                <ul class="submenu">
+                    <li><a href="caputti.html">Módulo 03 - Como Baixar</a></li>
+                    <li><a href="raul.html">Módulo 03 - VS Code</a></li>
+                </ul>
+            </li>
+            
+            <li><a href="wesley.html">Modulo 04 - Aula HTML/CSS/GPT</a></li>
+            <li><a href="atividade.html">Modulo 05 - Atividade</a></li>
+        </ul>
+    </div>
+    <div class="overlay"></div>
+    <img src="" alt="">
+    
+    <script>
+        // Lógica de Destaque do Link Ativo (Atualizada para este arquivo)
+        function highlightActiveLink() {
+            // Se o nome do arquivo for diferente de 'complemento_css.html', mude aqui.
+            const currentPath = window.location.pathname.split('/').pop() || 'complemento_css.html';
+
+            document.querySelectorAll('.comeco a').forEach(link => {
+                const linkPath = link.getAttribute('href').split('/').pop();
+                
+                if (linkPath === currentPath) {
+                    link.classList.add('active'); 
+                    const parentLi = link.closest('.has-submenu');
+                    if (parentLi) {
+                        parentLi.classList.add('active-parent');
+                        parentLi.classList.add('submenu-open'); 
+                    }
+                }
+            });
+        }
+
+        // Lógica de Abrir/Fechar Submenu (MANTIDA)
+        function setupSubmenuToggle() {
+            const submenuTitles = document.querySelectorAll('.submenu-title');
+            submenuTitles.forEach(title => {
+                title.addEventListener('click', function(event) {
+                    event.preventDefault(); 
+                    const parentLi = this.closest('.has-submenu');
+                    parentLi.classList.toggle('submenu-open');
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            highlightActiveLink();
+            setupSubmenuToggle();
+        });
+    </script>
+    </body>
+</html>
