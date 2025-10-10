@@ -1,36 +1,144 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Front-End</title>
+<title>Grupo 03 Uninove - Espaço Sideral</title>
 <style>
-  body {
+@charset "UTF-8";
+
+/* ======= ESTILO GERAL ======= */
+body {
     margin: 0;
-    padding: 0;
-    background: radial-gradient(circle at center, #0a0020, #020010 80%);
+    padding: 0; /* Adicionado para consistência */
+    background-color: rgb(0, 0, 0);
+    /* Seus gradientes de fundo originais */
+    background-image:
+        radial-gradient(circle at top left, rgba(18, 39, 224, 0.057), transparent 70%),
+        radial-gradient(circle at bottom right, rgba(99, 6, 6, 0.247), transparent 70%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
     color: white;
-    font-family: Arial, sans-serif;
     overflow: hidden;
-  }
+    font-family: 'Poppins', sans-serif; /* Adicionado para consistência de fonte */
+}
 
-  h1 {
+/* ======= MENU HAMBÚRGUER ======= */
+#menu { display: none; }
+
+.botao {
+    position: fixed;
+    top: 50px;
+    left: 20px;
+    width: 30px;
+    height: 22px;
+    cursor: pointer;
+    z-index: 1002;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.botao span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: #ebecf0;
+    border-radius: 3px;
+    transition: 0.8s;
+}
+
+/* ======= MENU LATERAL (COMECO) ======= */
+.comeco {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(10, 10, 20, 0.95), rgba(5, 5, 15, 0.85));
+    backdrop-filter: blur(10px);
+    box-shadow: 2px 0 15px rgba(2, 144, 245, 0.829);
+    transition: left 0.8s ease;
+    padding-top: 60px;
+    z-index: 1001;
+    overflow-y: auto;
+}
+
+#menu:checked ~ .comeco { left: 0; }
+#menu:checked + .botao span:nth-child(1) { transform: rotate(45deg) translateY(13px); }
+#menu:checked + .botao span:nth-child(2) { opacity: 0; }
+#menu:checked + .botao span:nth-child(3) { transform: rotate(-45deg) translateY(-13px); }
+
+/* Estilos de conteúdo do menu lateral */
+.comeco p { 
+    font-family: 'Poppins', sans-serif; color: rgba(255, 255, 255, 0.8); font-size: 18px; margin: 10px 20px;
+    border-bottom: 1px solid rgba(0, 150, 255, 0.2); 
+    padding-bottom: 5px; text-transform: uppercase; letter-spacing: 1px;
+}
+
+.comeco ul { padding: 0; } /* Adicionado para limpar padding padrão */
+.comeco ul li { list-style: none; padding: 12px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.3s ease; }
+.comeco ul li a { text-decoration: none; color: rgba(255, 255, 255, 0.75); font-family: 'Poppins', sans-serif; font-size: 15px; display: block; transition: all 0.3s ease; }
+
+.comeco ul li:hover {
+    background: rgba(238, 241, 243, 0.05);
+    transform: translateX(5px);
+    border-left: 3px solid rgba(246, 247, 248, 0.8);
+}
+.comeco ul li:hover a {
+    color: #eaf0f2;
+    text-shadow: 0 0 8px rgba(228, 231, 232, 0.6);
+}
+
+/* Submenus */
+.has-submenu { cursor: pointer; position: relative; }
+.submenu-title { display: block; color: rgba(255, 255, 255, 0.75) !important; }
+.has-submenu:hover .submenu-title { color: rgba(255, 255, 255, 0.75) !important; text-shadow: none !important; }
+.submenu {
+    list-style: none; padding: 0; margin: 0; background: rgba(0, 0, 0, 0.25); 
+    max-height: 0; transition: max-height 0.4s ease-out; overflow: hidden;
+    border-top: 1px solid rgba(0, 150, 255, 0.1);
+}
+.submenu li { padding: 8px 20px 8px 35px; border-bottom: 1px solid rgba(255, 255, 255, 0.03); }
+.submenu li:hover { background: rgba(2, 144, 245, 0.15); transform: none; border-left: none; }
+.submenu-open .submenu { max-height: 500px; }
+
+
+/* OVERLAY */
+.overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+}
+
+
+/* ======= TÍTULO E CONTEÚDO PRINCIPAL ======= */
+.welcome {
+    color: #fff;
+    font-size: 50px;
     text-align: center;
-    font-size: 7rem;
-    color: #bfffff;
-    text-shadow: 0 0 25px #00ffff, 0 0 40px #00bfff;
-    margin-top: 60px;
-  }
+    text-shadow: 0 0 8px rgba(0, 149, 255, 0.836),
+                0 0 16px rgba(0, 149, 255, 0.742);
+    z-index: 3; /* Adicionado Z-index para sobrepor */
+    position: relative; /* Adicionado Position para z-index funcionar */
+}
 
-  .scene {
+/* ======= FOGUETE + FOGO (Sua ideia original) ======= */
+.scene {
     position: relative;
     width: 100%;
     height: 100vh;
     overflow: hidden;
-  }
+    z-index: 0;
+}
 
-  /* Foguete emoji */
-  .rocket {
+.rocket {
     position: absolute;
     top: 52%;
     left: 50%;
@@ -38,92 +146,146 @@
     font-size: 4rem;
     animation: floating 3s ease-in-out infinite;
     z-index: 2;
-  }
+}
 
-  /* Fogo animado */
-  .fire {
-    position: absolute;
-    top: 52%;
-    left: calc(50% - 50px);
-    width: 30px;
-    height: 30px;
-    background: radial-gradient(circle at center, orange 20%, gold 60%, transparent 80%);
-    border-radius: 50%;
-    filter: blur(6px);
-    animation: flame 0.2s infinite alternate;
-    transform: translateY(-50%);
-    z-index: 1;
-  }
 
-  /* Animação do fogo */
-  @keyframes flame {
-    from {
-      transform: scale(1) translateY(-50%);
-      opacity: 1;
-    }
-    to {
-      transform: scale(1.6) translateY(-50%);
-      opacity: 0.6;
-    }
-  }
+/* ======= ANIMAÇÕES (Mantidas) ======= */
+@keyframes flame {
+    from { transform: scale(1) translateY(-50%); opacity: 1; }
+    to { transform: scale(1.6) translateY(-50%); opacity: 0.6; }
+}
 
-  /* Movimento suave do foguete */
-  @keyframes floating {
-    0%, 100% {
-      transform: translate(-50%, -52%);
-    }
-    50% {
-      transform: translate(-50%, -48%);
-    }
-  }
+@keyframes floating {
+    0%, 100% { transform: translate(-50%, -52%); }
+    50% { transform: translate(-50%, -48%); }
+}
 
-  /* Estrelas e movimento de fundo */
-  .stars {
+/* ======= ESTRELAS (Mantidas) ======= */
+.stars {
     position: absolute;
     width: 100%;
     height: 100%;
     background-image:
-      radial-gradient(white 1px, transparent 1px),
-      radial-gradient(white 1px, transparent 1px),
-      radial-gradient(white 1px, transparent 1px),
-      radial-gradient(white 1px, transparent 1px),
-      radial-gradient(white 1px, transparent 1px);
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(white 1px, transparent 1px);
     background-size: 200px 200px, 300px 300px, 400px 400px, 500px 500px, 600px 600px;
     background-position: 0 0, 100px 100px, 50px 50px, 200px 200px, 150px 250px;
     animation: moveStars 120s linear infinite;
     z-index: 0;
-  }
+}
 
-  @keyframes moveStars {
+@keyframes moveStars {
     from {
-      background-position: 0 0, 100px 100px, 50px 50px, 200px 200px, 150px 250px;
+        background-position: 0 0, 100px 100px, 50px 50px, 200px 200px, 150px 250px;
     }
     to {
-      background-position: -2500px 1200px, -2000px 1000px, -1500px 800px, -1000px 600px, -500px 400px;
+        background-position: -2500px 1200px, -2000px 1000px, -1500px 800px, -1000px 600px, -500px 400px;
     }
-  }
+}
 
-  p {
+/* ======= FRASE ======= */
+.frase {
     text-align: center;
-    margin-top: 650px;
-    font-size: 1.1rem;
-  }
+    font-size: 1.3rem;
+    margin-top: 80vh;
+    position: relative;
+    z-index: 3; /* Adicionado Z-index para sobrepor */
+    color: white; /* Garantir que a cor da fonte seja branca */
+    padding: 20px;
+}
 
+/* Ajuste de responsividade */
+@media (max-width: 768px) {
+    .welcome { font-size: 24px; margin-top: 60px; }
+    .rocket { font-size: 3rem; }
+}
 </style>
 </head>
+
 <body>
-  <div class="scene">
+<input type="checkbox" id="menu">
+<label for="menu" class="botao">
+    <span></span><span></span><span></span>
+</label>
+
+<div class="comeco">
+    <ul>
+        <p>Menu</p>
+        <li><a href="https://wesley01-uni9.vercel.app/">Início</a></li>
+        <li><a href="gabis.html" class="active">Welcome</a></li>
+        
+        <li class="has-submenu">
+            <a href="#" class="submenu-title">Módulo 01 - HTML/CSS 👇</a>
+            <ul class="submenu">
+                <li><a href="martin.html">Módulo 01 - HTML</a></li>
+                <li><a href="complemento.html">Complemento HTML</a></li>
+            </ul>
+        </li>
+        
+        <li class="has-submenu">
+            <a href="#" class="submenu-title">Módulo 02 - CSS Avançado 👇</a>
+            <ul class="submenu">
+                <li><a href="nath.html">Módulo 02 - CSS</a></li>
+                <li><a href="complementocss.html">Complemento CSS</a></li>
+            </ul>
+        </li>
+        
+        <li class="has-submenu">
+            <a href="#" class="submenu-title">Módulo 03 - Ferramentas 👇</a>
+            <ul class="submenu">
+                <li><a href="caputti.html">Módulo 03 - Como Baixar</a></li>
+                <li><a href="raul.html">Módulo 03 - VS Code</a></li>
+            </ul>
+        </li>
+        
+        <li><a href="wesley.html">Módulo 04 - Aula HTML/CSS/GPT</a></li>
+        <li><a href="atividade.html">Módulo 05 - Atividade</a></li>
+    </ul>
+</div>
+
+<div class="overlay"></div>
+
+<div class="welcome">
+    <h1>Curso de <br>Front-End!</h1>
+</div>
+
+<div class="scene">
     <div class="stars"></div>
-    <h1>Front-End!</h1>
-
-    <!-- Fogo -->
-    <div class=""></div>
-
-    <!-- Foguete emoji -->
+    <div class="fire"></div>
     <div class="rocket">🚀</div>
+    <div class="frase">“Aqui começa sua jornada no desenvolvimento Front-End 🚀”</div>
+</div>
 
-    <p>Estamos felizes em ter você no curso de <strong>Front-End</strong>.</p>
-    <p>“Aqui começa sua jornada no desenvolvimento Front-End 🚀”</p>
-  </div>
+<script>
+    const menuItems = document.querySelectorAll('.has-submenu');
+
+    menuItems.forEach(item => {
+        item.addEventListener('click', function(event) {
+            // Verifica se o clique não foi em um link do submenu
+            if (!event.target.closest('.submenu a')) {
+                event.preventDefault(); 
+                this.classList.toggle('submenu-open');
+            }
+        });
+    });
+
+    document.querySelector('.overlay').addEventListener('click', function() {
+        document.getElementById('menu').checked = false; 
+    });
+
+    const allMenuItems = document.querySelectorAll('.comeco ul li a');
+    allMenuItems.forEach(item => {
+        item.addEventListener('click', function() {
+            // Fecha o menu após um pequeno atraso para dar tempo de navegação
+            setTimeout(() => {
+                document.getElementById('menu').checked = false; 
+            }, 100); 
+        });
+    });
+</script>
+
 </body>
 </html>
