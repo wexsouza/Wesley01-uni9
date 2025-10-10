@@ -1,400 +1,129 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grupo 03 Uninove</title>
-    <style>
-@charset "UTF-8";
-
-/* ======= ESTILO GERAL ======= */
-body {
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Front-End</title>
+<style>
+  body {
     margin: 0;
-    padding: 0; 
-    overflow: hidden; /* CRUCIAL para o efeito de fundo */
-    background-color: #000; /* Fundo Preto Intenso */
-    color: white; 
-    font-family: 'Poppins', sans-serif; 
-    position: relative; 
-}
+    padding: 0;
+    background: radial-gradient(circle at center, #0a0020, #020010 80%);
+    color: white;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+  }
 
-/*
- * ========================================
- * == NOVO FUNDO CÓSMICO (PILHAGEM DE CSS) ==
- * ========================================
- */
+  h1 {
+    text-align: center;
+    font-size: 7rem;
+    color: #bfffff;
+    text-shadow: 0 0 25px #00ffff, 0 0 40px #00bfff;
+    margin-top: 60px;
+  }
 
-/* 1. NEBULOSA BASE (Gradientes de Cores Ricas) */
-.nebula-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1; 
-    /* Cores inspiradas nos Pilares da Criação/Nebulosas: Azul/Roxo, Vermelho/Dourado */
-    background-image:
-        radial-gradient(circle at 10% 20%, rgba(10, 10, 50, 0.4), transparent 50%), /* Base azul escura */
-        radial-gradient(circle at 90% 80%, rgba(50, 10, 10, 0.4), transparent 50%), /* Base vermelha escura */
-        radial-gradient(circle at 30% 70%, rgba(50, 0, 100, 0.2), transparent 60%), /* Roxo profundo */
-        radial-gradient(circle at 70% 30%, rgba(255, 100, 50, 0.1), transparent 70%); /* Toque de dourado/laranja */
-    
-    background-size: cover;
-    background-attachment: fixed;
-    animation: slowPan 150s ease-in-out infinite alternate; /* Movimento Lento da Nebulosa */
-    pointer-events: none;
-    opacity: 0.9;
-}
-
-@keyframes slowPan {
-    0% { background-position: 0% 0%; }
-    100% { background-position: 100% 100%; }
-}
-
-/* 2. CAMPO DE ESTRELAS COM BRILHO (Adicionando text-shadow) */
-.star-field {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -2; 
-    background: transparent;
-}
-
-/* Estrelas Pequenas (Azuladas/Brancas) */
-.stars-small {
-    width: 1px;
-    height: 1px;
-    background: transparent;
-    /* Geração de estrelas com um box-shadow que inclui um brilho sutil */
-    box-shadow: 
-        100px 50px rgba(200, 220, 255, 0.7), 200px 150px rgba(200, 220, 255, 0.7), 350px 25px rgba(200, 220, 255, 0.7), 
-        500px 200px rgba(200, 220, 255, 0.7), 700px 300px rgba(200, 220, 255, 0.7), 900px 50px rgba(200, 220, 255, 0.7), 
-        1100px 150px rgba(200, 220, 255, 0.7), 1300px 500px rgba(200, 220, 255, 0.7), 1500px 50px rgba(200, 220, 255, 0.7), 
-        1700px 400px rgba(200, 220, 255, 0.7), 1900px 100px rgba(200, 220, 255, 0.7), 2100px 250px rgba(200, 220, 255, 0.7), 
-        2300px 600px rgba(200, 220, 255, 0.7), 2500px 300px rgba(200, 220, 255, 0.7), 2700px 50px rgba(200, 220, 255, 0.7),
-        2900px 450px rgba(200, 220, 255, 0.7), 3100px 150px rgba(200, 220, 255, 0.7), 3300px 200px rgba(200, 220, 255, 0.7),
-        3500px 700px rgba(200, 220, 255, 0.7), 3700px 250px rgba(200, 220, 255, 0.7), 3900px 50px rgba(200, 220, 255, 0.7),
-        4100px 350px rgba(200, 220, 255, 0.7), 4300px 100px rgba(200, 220, 255, 0.7), 4500px 550px rgba(200, 220, 255, 0.7),
-        4700px 200px rgba(200, 220, 255, 0.7), 4900px 400px rgba(200, 220, 255, 0.7), 5100px 180px rgba(200, 220, 255, 0.7),
-        5300px 650px rgba(200, 220, 255, 0.7), 5500px 280px rgba(200, 220, 255, 0.7), 5700px 90px rgba(200, 220, 255, 0.7);
-    animation: animateStarsSmall 180s linear infinite; 
-    background-size: 5800px 800px;
-}
-
-/* Estrelas Médias (Amareladas/Brancas) - Movimento mais rápido */
-.stars-medium {
-    width: 2px;
-    height: 2px;
-    background: transparent;
-    box-shadow: 
-        50px 400px rgba(255, 250, 200, 0.8), 300px 600px rgba(255, 250, 200, 0.8), 750px 150px rgba(255, 250, 200, 0.8), 
-        1200px 700px rgba(255, 250, 200, 0.8), 1600px 300px rgba(255, 250, 200, 0.8), 2000px 500px rgba(255, 250, 200, 0.8),
-        2400px 100px rgba(255, 250, 200, 0.8), 2800px 400px rgba(255, 250, 200, 0.8), 3200px 650px rgba(255, 250, 200, 0.8),
-        3600px 200px rgba(255, 250, 200, 0.8), 4000px 550px rgba(255, 250, 200, 0.8), 4400px 50px rgba(255, 250, 200, 0.8);
-    animation: animateStarsMedium 100s linear infinite; 
-    background-size: 4500px 800px;
-}
-
-/* Estrelas Grandes e Próximas (Brancas Puras) - Movimento mais rápido */
-.stars-large {
-    width: 3px;
-    height: 3px;
-    background: transparent;
-    box-shadow: 
-        20px 200px #fff, 150px 700px #fff, 400px 50px #fff, 
-        800px 450px #fff, 1000px 100px #fff, 1300px 600px #fff,
-        1500px 250px #fff, 1800px 750px #fff, 2000px 350px #fff;
-    animation: animateStarsLarge 50s linear infinite; 
-    background-size: 2100px 800px;
-}
-
-/* Animações de movimento (Correspondem à largura dos box-shadows) */
-@keyframes animateStarsSmall {
-    from { background-position: 0 0; }
-    to { background-position: -5800px 0; }
-}
-
-@keyframes animateStarsMedium {
-    from { background-position: 0 0; }
-    to { background-position: -4500px 0; }
-}
-
-@keyframes animateStarsLarge {
-    from { background-position: 0 0; }
-    to { background-position: -2100px 0; }
-}
-
-/* 3. EFEITO GLOW NAS ESTRELAS (Para simular o brilho) */
-/* Este é o truque para as estrelas parecerem mais vivas */
-.star-field > div {
-    /* Adiciona um brilho subtil às "estrelas" que são geradas via box-shadow */
-    filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
-}
-
-
-/* ======= MENU HAMBURGUER ======= */
-#menu {
-    display: none;
-}
-
-.botao {
-    position: fixed;
-    top: 50px;
-    left: 20px;
-    width: 30px;
-    height: 22px;
-    cursor: pointer;
-    z-index: 1002;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.botao span {
-    display: block;
-    height: 3px;
-    width: 100%;
-    background: #ebecf0;
-    border-radius: 3px;
-    transition: 0.8s;
-}
-
-/* ======= MENU LATERAL MODERNO ======= */
-.comeco {
-    position: fixed;
-    top: 0;
-    left: -250px;
-    width: 250px;
-    height: 100%;
-    /* Fundo que contrasta com o espaço, mas mantém a transparência azulada/roxeada */
-    background: linear-gradient(180deg, rgba(15, 15, 30, 0.98), rgba(8, 8, 18, 0.95)); 
-    backdrop-filter: blur(10px);
-    /* Sombra azul/neon para a borda */
-    box-shadow: 2px 0 15px rgba(2, 144, 245, 0.829);
-    border-right: 1px solid rgba(0, 150, 255, 0.15);
-    transition: left 0.8s ease;
-    padding-top: 60px;
-    z-index: 1001;
-    overflow-y: auto;
-}
-
-.comeco p {
-    font-family: 'Poppins', sans-serif;
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 18px;
-    margin: 10px 20px;
-    /* Linha do menu em tom azul/ciano */
-    border-bottom: 1px solid rgba(0, 191, 255, 0.4); 
-    padding-bottom: 5px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* ======= EFEITO DE HOVER CIANO NO MENU ======= */
-.comeco ul li:hover {
-    background: rgba(0, 191, 255, 0.1); /* Fundo ciano claro */
-    transform: translateX(5px);
-    border-left: 3px solid #00BFFF; /* Ciano puro na borda */
-}
-
-.comeco ul li:hover a {
-    color: #00BFFF;
-    text-shadow: 0 0 8px rgba(0, 191, 255, 0.8); /* Brilho ciano */
-}
-
-/* ======= LINKS E TEXTOS (Mantendo seus estilos originais) ======= */
-
-.comeco ul li {
-    list-style: none;
-    padding: 12px 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    transition: all 0.3s ease;
-}
-
-.comeco ul li a {
-    text-decoration: none;
-    color: rgba(255, 255, 255, 0.75);
-    font-family: 'Poppins', sans-serif;
-    font-size: 15px;
-    display: block;
-    transition: all 0.3s ease;
-}
-
-/* Submenus */
-.has-submenu { cursor: pointer; position: relative; }
-.submenu-title { display: block; color: rgba(255, 255, 255, 0.75) !important; }
-.has-submenu:hover .submenu-title { color: rgba(255, 255, 255, 0.75) !important; text-shadow: none !important; }
-.submenu {
-    list-style: none; padding: 0; margin: 0; background: rgba(0, 0, 0, 0.35); 
-    max-height: 0; transition: max-height 0.4s ease-out; overflow: hidden;
-    border-top: 1px solid rgba(0, 150, 255, 0.1);
-}
-.submenu li { padding: 8px 20px 8px 35px; border-bottom: 1px solid rgba(255, 255, 255, 0.03); }
-.submenu li:hover { background: rgba(0, 191, 255, 0.15); transform: none; border-left: none; }
-.submenu-open .submenu { max-height: 500px; }
-
-
-/* Scrollbar, Overlay, Animação Menu, etc. */
-.comeco::-webkit-scrollbar { width: 6px; }
-.comeco::-webkit-scrollbar-thumb { background: rgb(236, 237, 237); border-radius: 4px; }
-.comeco::-webkit-scrollbar-thumb:hover { background: rgba(234, 236, 238, 0.6); }
-
-.overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.4); opacity: 0; pointer-events: none;
-    transition: opacity 0.3s ease; z-index: 1000;
-}
-#menu:checked ~ .comeco { left: 0; }
-#menu:checked ~ .overlay { opacity: 1; pointer-events: auto; }
-#menu:checked + .botao span:nth-child(1) { transform: rotate(45deg) translateY(13px); background: white; }
-#menu:checked + .botao span:nth-child(2) { opacity: 0; }
-#menu:checked + .botao span:nth-child(3) { transform: rotate(-45deg) translateY(-13px); background: white; }
-
-a { color: rgb(243, 236, 236); text-decoration: none; }
-a:hover { color: rgb(236, 229, 229); }
-a:active { color: rgb(239, 239, 228); }
-
-/* Conteúdo Principal (Acima do fundo) */
-.welcome, .paragrafi {
+  .scene {
     position: relative;
-    z-index: 3; 
-    padding: 0 20px; /* Adicionado um padding lateral para telas pequenas */
-}
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
 
-/* Estilo do Título (Aprimorado com brilho Neon) */
-.welcome {
-    margin-bottom: 20%;
-    color: #fff;
-    font-size: 80px;
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
-    margin-top: 90px;
-    /* Brilho neon azul/ciano intenso */
-    text-shadow:
-        0 0 10px rgba(0, 191, 255, 0.9), 
-        0 0 20px rgba(0, 191, 255, 0.7),
-        0 0 40px rgba(0, 191, 255, 0.5);
-}
+  /* Foguete emoji */
+  .rocket {
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4rem;
+    animation: floating 3s ease-in-out infinite;
+    z-index: 2;
+  }
 
-.paragrafi {
-    text-align: center;
-    color: rgb(236, 234, 241);
-}
+  /* Fogo animado */
+  .fire {
+    position: absolute;
+    top: 52%;
+    left: calc(50% - 50px);
+    width: 30px;
+    height: 30px;
+    background: radial-gradient(circle at center, orange 20%, gold 60%, transparent 80%);
+    border-radius: 50%;
+    filter: blur(6px);
+    animation: flame 0.2s infinite alternate;
+    transform: translateY(-50%);
+    z-index: 1;
+  }
 
-.img { padding-top: 240px; text-align: center; }
-video { text-align: center; }
-.img-video { text-align: center; padding-top: 2px; padding-bottom: 0px; }
-.links a { padding: 650px; font-size: 50px; }
-.html { text-align: center; padding-top: 20px; font-family: Arial, Helvetica, sans-serif; color: white; transition: .3s; }
-.html:hover { transition: .3s; color: black; }
-.texto { padding-left: 650px; }
-.siga { text-align: center; }
-.insta { text-align: center; }
-
-
-@media (max-width: 768px) {
-    .welcome {
-        font-size: 50px;
-        margin-top: 50px;
+  /* Animação do fogo */
+  @keyframes flame {
+    from {
+      transform: scale(1) translateY(-50%);
+      opacity: 1;
     }
-}
+    to {
+      transform: scale(1.6) translateY(-50%);
+      opacity: 0.6;
+    }
+  }
+
+  /* Movimento suave do foguete */
+  @keyframes floating {
+    0%, 100% {
+      transform: translate(-50%, -52%);
+    }
+    50% {
+      transform: translate(-50%, -48%);
+    }
+  }
+
+  /* Estrelas e movimento de fundo */
+  .stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image:
+      radial-gradient(white 1px, transparent 1px),
+      radial-gradient(white 1px, transparent 1px),
+      radial-gradient(white 1px, transparent 1px),
+      radial-gradient(white 1px, transparent 1px),
+      radial-gradient(white 1px, transparent 1px);
+    background-size: 200px 200px, 300px 300px, 400px 400px, 500px 500px, 600px 600px;
+    background-position: 0 0, 100px 100px, 50px 50px, 200px 200px, 150px 250px;
+    animation: moveStars 120s linear infinite;
+    z-index: 0;
+  }
+
+  @keyframes moveStars {
+    from {
+      background-position: 0 0, 100px 100px, 50px 50px, 200px 200px, 150px 250px;
+    }
+    to {
+      background-position: -2500px 1200px, -2000px 1000px, -1500px 800px, -1000px 600px, -500px 400px;
+    }
+  }
+
+  p {
+    text-align: center;
+    margin-top: 650px;
+    font-size: 1.1rem;
+  }
+
 </style>
-
-
 </head>
-<body> 
-    
-    <div class="star-field">
-        <div class="stars-small"></div>
-        <div class="stars-medium"></div>
-        <div class="stars-large"></div>
-    </div>
-    
-    <div class="nebula-overlay"></div>
+<body>
+  <div class="scene">
+    <div class="stars"></div>
+    <h1>Front-End!</h1>
 
-    
-    <div class="welcome">
-        <h2>Curso de <br>Front-End!</h2>
-    </div>
+    <!-- Fogo -->
+    <div class=""></div>
 
-    <div class="paragrafi">
-        <p>Estamos felizes em ter você no curso de <strong>Front-End</strong>.</p>
-        <p class="frase"> “Aqui começa sua jornada no desenvolvimento Front-End 🚀”</p>
-    </div>
-    
-    
-    <input type="checkbox" name="" id="menu">
-    <label for="menu" class="botao">
-        <span></span>
-        <span></span>
-        <span></span>
-    </label>
+    <!-- Foguete emoji -->
+    <div class="rocket">🚀</div>
 
-    
-    <div class="comeco">
-        <ul> 
-            <p>Menu</p>
-            <li> <a href="https://wesley01-uni9.vercel.app/">Inicio</a></li>
-            <li> <a href="gabis.html">Welcome</a></li>
-
-            <li class="has-submenu">
-                <a href="#" class="submenu-title">Modulo 01 - HTML/CSS 👇</a>
-                <ul class="submenu">
-                    <li><a href="martin.html">Módulo 01 - HTML</a></li>
-                    <li><a href="complemento.html">Módulo 01 - Complemento HTML</a></li>
-                </ul>
-            </li>
-
-            <li class="has-submenu">
-                <a href="#" class="submenu-title">Modulo 02 - CSS Avançado 👇</a>
-                <ul class="submenu">
-                    <li><a href="nath.html">Módulo 02 - CSS</a></li>
-                    <li><a href="complementocss.html">Módulo 02 - Complemento CSS</a></li>
-                </ul>
-            </li>
-
-            <li class="has-submenu">
-                <a href="#" class="submenu-title">Modulo 03 - Ferramentas 👇</a>
-                <ul class="submenu">
-                    <li><a href="caputti.html">Módulo 03 - Como Baixar</a></li>
-                    <li><a href="raul.html">Módulo 03 - VS Code</a></li>
-                </ul>
-            </li>
-            
-            <li><a href="wesley.html">Modulo 04 - Aula HTML/CSS/GPT</a></li>
-            <li><a href="atividade.html">Modulo 05 - Atividade</a></li>
-        </ul>
-    </div>
-    <div class="overlay"></div>
-    <img src="" alt=""> 
-    
-    
-    <script>
-        const menuItems = document.querySelectorAll('.has-submenu');
-
-        menuItems.forEach(item => {
-            item.addEventListener('click', function(event) {
-                if (!event.target.closest('.submenu a')) {
-                    event.preventDefault(); 
-                    this.classList.toggle('submenu-open');
-                }
-            });
-        });
-
-        document.querySelector('.overlay').addEventListener('click', function() {
-            document.getElementById('menu').checked = false; 
-        });
-
-        const allMenuItems = document.querySelectorAll('.comeco ul li a');
-        allMenuItems.forEach(item => {
-            item.addEventListener('click', function() {
-                setTimeout(() => {
-                    document.getElementById('menu').checked = false; 
-                }, 100); 
-            });
-        });
-    </script>
+    <p>Estamos felizes em ter você no curso de <strong>Front-End</strong>.</p>
+    <p>“Aqui começa sua jornada no desenvolvimento Front-End 🚀”</p>
+  </div>
 </body>
 </html>
