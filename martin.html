@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boas Vindas</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<style>
+    <title>Grupo 03 Uninove</title>
+    <link rel="stylesheet" href="style.css"> 
+    <style>
 @charset "UTF-8";
 
 /* ======= ESTILO GERAL ======= */
@@ -22,7 +20,7 @@ body {
   color: white;
 }
 
-/* ======= MENU HAMBURGUER ======= */
+/* ======= MENU HAMBURGUER E BOTÃO ======= */
 #menu {
   display: none;
 }
@@ -49,7 +47,7 @@ body {
   transition: 0.8s;
 }
 
-/* ======= MENU LATERAL MODERNO ======= */
+/* ======= MENU LATERAL MODERNO (COMECO) ======= */
 .comeco {
   position: fixed;
   top: 0;
@@ -77,7 +75,7 @@ body {
   letter-spacing: 1px;
 }
 
-/* ======= ITENS DO MENU ======= */
+/* ITENS DE MENU (NÍVEL SUPERIOR) */
 .comeco ul li {
   list-style: none;
   padding: 12px 20px;
@@ -94,9 +92,9 @@ body {
   transition: all 0.3s ease;
 }
 
-/* ======= EFEITO AO PASSAR O MOUSE ======= */
+/* EFEITO AO PASSAR O MOUSE (NÍVEL SUPERIOR) */
 .comeco ul li:hover {
-  background: rgba(238, 241, 243, 0.865);
+  background: rgba(238, 241, 243, 0.05);
   transform: translateX(5px);
   border-left: 3px solid rgba(246, 247, 248, 0.8);
 }
@@ -105,6 +103,69 @@ body {
   color: #eaf0f2;
   text-shadow: 0 0 8px rgba(228, 231, 232, 0.6);
 }
+
+/* === CSS PARA SUBMENUS (Subtópicos) === */
+.has-submenu {
+    cursor: pointer;
+    position: relative;
+}
+
+.submenu-title {
+    display: block;
+    color: rgba(255, 255, 255, 0.75) !important;
+}
+
+/* Impede que o hover da LI principal afete o texto do Submenu Title */
+.has-submenu:hover .submenu-title {
+    color: rgba(255, 255, 255, 0.75) !important;
+    text-shadow: none !important;
+}
+
+.submenu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: rgba(0, 0, 0, 0.25); 
+    max-height: 0;
+    transition: max-height 0.4s ease-out;
+    overflow: hidden;
+    border-top: 1px solid rgba(0, 150, 255, 0.1);
+}
+
+.submenu li {
+    padding: 8px 20px 8px 35px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* Estilo de hover do item do submenu (sobrescreve o estilo principal) */
+.submenu li:hover {
+    background: rgba(2, 144, 245, 0.15);
+    transform: none;
+    border-left: none;
+}
+
+/* CLASSE USADA PELO JAVASCRIPT PARA ABRIR O SUBMENU */
+.submenu-open .submenu {
+    max-height: 500px;
+}
+
+/* DESTAQUE PARA ITEM ATIVO */
+.comeco ul li a.active, .comeco ul li a.active:hover {
+    color: rgb(245, 203, 73) !important; 
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(245, 203, 73, 0.7);
+}
+
+.comeco ul li.active-parent {
+    border-left: 3px solid rgb(245, 203, 73); 
+    background: rgba(245, 203, 73, 0.05);
+}
+
+.comeco ul li.active-parent .submenu {
+    max-height: 500px; 
+}
+/* === FIM DO CSS PARA SUBMENUS === */
+
 
 /* ======= SCROLLBAR ======= */
 .comeco::-webkit-scrollbar {
@@ -159,10 +220,9 @@ body {
   background: white;
 }
 
-/* ======= LINKS ======= */
+/* ======= LINKS GERAIS (fora do menu) ======= */
 a {
   color: rgb(243, 236, 236);
-  text-indent: none;
   text-decoration: none;
 }
 
@@ -172,49 +232,6 @@ a:hover {
 
 a:active {
   color: rgb(239, 239, 228);
-}
-
-/* ======= OUTROS ELEMENTOS DA PÁGINA ======= */
-.img {
-  padding-top: 240px;
-  text-align: center;
-}
-
-video {
-  text-align: center;
-}
-
-.img-video {
-  text-align: center;
-  padding-top: 2px;
-  padding-bottom: 0px;
-}
-
-.links a {
-  padding: 650px;
-  font-size: 50px;
-}
-
-.html {
-  text-align: center;
-  padding-top: 20px;
-  font-family: Arial, Helvetica, sans-serif;
-  color: white;
-  transition: .3s;
-}
-
-.html:hover {
-  transition: .3s;
-  color: black;
-}
-
-.texto {
-  padding-left: 650px;
-}
-
-.paragrafi {
-  text-align: center;
-  color: rgb(236, 234, 241);
 }
 
 /* ======= TÍTULO WELCOME ======= */
@@ -230,43 +247,203 @@ video {
   font-weight: 700;
 }
 
-.siga {
-  text-align: center;
+/* ======= SEÇÃO DE VÍDEO E CARD DE PERFIL (FLEXBOX) ======= */
+.video-e-info-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px; 
+    padding-top: 20px;
+    padding-bottom: 20px;
+    flex-wrap: wrap; /* Para responsividade */
 }
 
-.insta {
+.video-wrapper {
+    /* Mantenha o vídeo responsivo, se necessário */
+    max-width: 800px; /* Largura máxima do vídeo */
+}
+
+.video-wrapper iframe {
+    max-width: 100%; /* Garante que não ultrapasse a largura do container */
+    height: 500px;
+    /* Adicione um media query se quiser ajustar a altura em mobile */
+}
+
+/* Estilo do Card de Perfil */
+.profile-card {
+    background: linear-gradient(135deg, rgba(2, 144, 245, 0.1), rgba(99, 6, 6, 0.1));
+    border: 1px solid rgba(0, 150, 255, 0.2);
+    border-radius: 15px;
+    padding: 20px;
+    width: 280px; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    backdrop-filter: blur(5px);
+    font-size: 20;
+}
+
+.profile-pic {
+    width: 120px; 
+    height: 120px;
+    border-radius: 50%; 
+    object-fit: cover; 
+    border: 3px solid rgba(0, 150, 255, 0.6); 
+    margin-bottom: 15px;
+    box-shadow: 0 0 10px rgba(0, 150, 255, 0.4);
+}
+
+.profile-name {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 8px;
+    text-shadow: 0 0 5px rgba(0, 150, 255, 0.5);
+}
+
+.profile-bio {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.instagram-link {
+    display: inline-flex; 
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.instagram-link:hover {
+    color: #f77737;
+}
+
+.instagram-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+    border-radius: 5px;
+}
+/* === FIM DO CSS DE VÍDEO E CARD === */
+
+
+/* OUTROS ELEMENTOS (MANTIDOS) */
+.paragrafi {
   text-align: center;
+  color: rgb(236, 234, 241);
 }
 </style>
-    <h1 class="html">HTML</h1>
-    <p class="siga">Gabriel Martiniano <br>Estudante de ADM</p>
-   
-    <div class="img-video">
-        <!-- 🔹 Vídeo do YouTube -->
-        <iframe width="800" height="500" src="https://www.youtube.com/embed/-7QUv4yEZ-s?si=iBIHbnIoa5IQEcHK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+</head>
+<body>    
+
+    <div class="welcome">
+        <h2>HTML</h2>
     </div>
 
-    <!-- 🔹 Menu adicionado -->
-    <input type="checkbox" id="menu">
+    <div class="video-e-info-container">
+        
+        <div class="video-wrapper">
+        <iframe width="800" height="500" src="https://www.youtube.com/embed/-7QUv4yEZ-s?si=iBIHbnIoa5IQEcHK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+        </div>
+
+        <div class="profile-card">
+            <img src="gbb.jpeg" alt="Foto de Perfil" class="profile-pic">
+            <h2>Aluno:<br>Gabriel Martiniano</h2>
+            <p class="profile-bio"> Introdução ao HTML<a href="https://www.devmedia.com.br/introducao-ao-visual-studio-code/34418"><br><br><button>Click aqui</button></a></p>
+            </a>
+        </div>
+    </div>
+    <div class="paragrafi">
+        <p class="frase"> “Everything is possible if you believe 🚀”</p>
+    </div>
+    
+    <input type="checkbox" name="" id="menu">
     <label for="menu" class="botao">
         <span></span>
         <span></span>
         <span></span>
     </label>
+
     <div class="comeco">
-        <ul> <p>Menu</p>
+        <ul> 
+            <p>Menu</p>
             <li> <a href="https://wesley01-uni9.vercel.app/">Inicio</a></li>
             <li> <a href="gabis.html">Welcome</a></li>
-            <li><a href="martin.html">Modulo 01 - HTML</a></li>
-            <li><a href="index04.html">Modulo 01 - Complemento HTML</a></li>
-            <li><a href="index05.html">Modulo 02 - CSS</a></li>
-            <li><a href="index04.html">Modulo 02 - Complemento CSS</a></li>
-            <li><a href="caputti.html">Modulo 03 - Como Baixar</a></li>
-            <li><a href="raul.html">Modulo 03 - VS Code</a></li>
+
+            <li class="has-submenu">
+                <a href="#" class="submenu-title">Modulo 01 - HTML/CSS 👇</a>
+                <ul class="submenu">
+                    <li><a href="martin.html">Módulo 01 - HTML</a></li>
+                    <li><a href="index04.html">Módulo 01 - Complemento HTML</a></li>
+                </ul>
+            </li>
+
+            <li class="has-submenu">
+                <a href="#" class="submenu-title">Modulo 02 - CSS Avançado 👇</a>
+                <ul class="submenu">
+                    <li><a href="index05.html">Módulo 02 - CSS</a></li>
+                    <li><a href="index04.html">Módulo 02 - Complemento CSS</a></li>
+                </ul>
+            </li>
+
+            <li class="has-submenu">
+                <a href="#" class="submenu-title">Modulo 03 - Ferramentas 👇</a>
+                <ul class="submenu">
+                    <li><a href="caputti.html">Módulo 03 - Como Baixar</a></li>
+                    <li><a href="raul.html">Módulo 03 - VS Code</a></li>
+                </ul>
+            </li>
+            
             <li><a href="index02.html">Modulo 04 - Aula HTML/CSS/GPT</a></li>
             <li><a href="index04.html">Modulo 05 - Atividade</a></li>
         </ul>
     </div>
     <div class="overlay"></div>
-</body>
+    <img src="" alt="">
+    
+    <script>
+        // === Lógica de Destaque do Link Ativo ===
+        function highlightActiveLink() {
+            const currentPath = window.location.pathname.split('/').pop() || 'gabis.html';
+
+            document.querySelectorAll('.comeco a').forEach(link => {
+                const linkPath = link.getAttribute('href').split('/').pop();
+                
+                if (linkPath === currentPath) {
+                    link.classList.add('active'); 
+
+                    const parentLi = link.closest('.has-submenu');
+                    if (parentLi) {
+                        parentLi.classList.add('active-parent');
+                        parentLi.classList.add('submenu-open'); 
+                    }
+                }
+            });
+        }
+
+        // === Lógica de Abrir/Fechar Submenu ===
+        function setupSubmenuToggle() {
+            const submenuTitles = document.querySelectorAll('.submenu-title');
+
+            submenuTitles.forEach(title => {
+                title.addEventListener('click', function(event) {
+                    event.preventDefault(); 
+                    const parentLi = this.closest('.has-submenu');
+                    parentLi.classList.toggle('submenu-open');
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            highlightActiveLink();
+            setupSubmenuToggle();
+        });
+    </script>
+    </body>
 </html>

@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grupo 03 Uninove</title>
-    <link rel="stylesheet" href="style.css">
-   <style>
+    <link rel="stylesheet" href="style.css"> 
+    <style>
 @charset "UTF-8";
 
 /* ======= ESTILO GERAL ======= */
@@ -75,7 +75,7 @@ body {
   letter-spacing: 1px;
 }
 
-/* ======= ITENS DO MENU ======= */
+/* ======= ITENS DO MENU (NÍVEL SUPERIOR) ======= */
 .comeco ul li {
   list-style: none;
   padding: 12px 20px;
@@ -92,9 +92,9 @@ body {
   transition: all 0.3s ease;
 }
 
-/* ======= EFEITO AO PASSAR O MOUSE ======= */
+/* ======= EFEITO AO PASSAR O MOUSE (NÍVEL SUPERIOR) ======= */
 .comeco ul li:hover {
-  background: rgba(238, 241, 243, 0.865);
+  background: rgba(238, 241, 243, 0.05); /* Ajustei para um tom mais discreto com o fundo escuro */
   transform: translateX(5px);
   border-left: 3px solid rgba(246, 247, 248, 0.8);
 }
@@ -103,6 +103,66 @@ body {
   color: #eaf0f2;
   text-shadow: 0 0 8px rgba(228, 231, 232, 0.6);
 }
+
+/*
+ * ========================================
+ * === NOVO CSS PARA SUBMENUS (Subtópicos) ==
+ * ========================================
+ */
+.has-submenu {
+    cursor: pointer; /* Indica que é clicável */
+    position: relative;
+    /* Remove a cor de fundo do hover do li pai para evitar conflito com o fundo do submenu */
+}
+
+.submenu-title {
+    /* Garante que o título principal do submenu se parece com os outros links */
+    display: block;
+    color: rgba(255, 255, 255, 0.75) !important;
+}
+
+/* Impede que o hover da LI principal afete o texto do Submenu Title */
+.has-submenu:hover .submenu-title {
+    color: rgba(255, 255, 255, 0.75) !important;
+    text-shadow: none !important;
+}
+
+.submenu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    /* Estilo para diferenciar o submenu */
+    background: rgba(0, 0, 0, 0.25); 
+    /* Altura 0 para esconder o submenu (o JS controla a classe .submenu-open) */
+    max-height: 0;
+    transition: max-height 0.4s ease-out; /* Animação suave */
+    overflow: hidden;
+    border-top: 1px solid rgba(0, 150, 255, 0.1);
+}
+
+.submenu li {
+    padding: 8px 20px 8px 35px; /* Mais indentação para diferenciar */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03); /* Linha mais sutil para sub-itens */
+}
+
+/* Estilo de hover do item do submenu (sobrescreve o estilo principal) */
+.submenu li:hover {
+    background: rgba(2, 144, 245, 0.15);
+    transform: none; /* Remove a translação do LI principal */
+    border-left: none; /* Remove o border-left do LI principal */
+}
+
+/* CLASSE USADA PELO JAVASCRIPT PARA ABRIR O SUBMENU */
+.submenu-open .submenu {
+    max-height: 500px; /* Valor grande o suficiente para expandir */
+}
+
+/*
+ * ========================================
+ * === FIM DO NOVO CSS PARA SUBMENUS ========
+ * ========================================
+ */
+
 
 /* ======= SCROLLBAR ======= */
 .comeco::-webkit-scrollbar {
@@ -157,7 +217,7 @@ body {
   background: white;
 }
 
-/* ======= LINKS ======= */
+/* ======= LINKS GERAIS ======= */
 a {
   color: rgb(243, 236, 236);
   text-indent: none;
@@ -239,7 +299,7 @@ video {
 
 
 </head>
-<body>   
+<body>   
     <div class="welcome">
         <h2>Curso de Front-End!</h2>
         <h3>Grupo 3 - Uninove</h3>
@@ -256,24 +316,63 @@ video {
         <span></span>
         <span></span>
     </label>
+
     <div class="comeco">
-        <ul> <p>Menu</p>
+        <ul> 
+            <p>Menu</p>
             <li> <a href="https://wesley01-uni9.vercel.app/">Inicio</a></li>
             <li> <a href="gabis.html">Welcome</a></li>
-            <li><a href="martin.html">Modulo 01 - HTML</a></li>
-            <li><a href="index04.html">Modulo 01 - Complemento HTML</a></li>
-            <li><a href="index05.html">Modulo 02 - CSS</a></li>
-            <li><a href="index04.html">Modulo 02 - Complemento CSS</a></li>
-            <li><a href="caputti.html">Modulo 03 - Como Baixar</a></li>
-            <li><a href="raul.html">Modulo 03 - VS Code</a></li>
+
+            <li class="has-submenu">
+                <a href="#" class="submenu-title">Modulo 01 - HTML/CSS 👇</a>
+                <ul class="submenu">
+                    <li><a href="martin.html">Módulo 01 - HTML</a></li>
+                    <li><a href="index04.html">Módulo 01 - Complemento HTML</a></li>
+                </ul>
+            </li>
+
+            <li class="has-submenu">
+                <a href="#" class="submenu-title">Modulo 02 - CSS Avançado 👇</a>
+                <ul class="submenu">
+                    <li><a href="index05.html">Módulo 02 - CSS</a></li>
+                    <li><a href="index04.html">Módulo 02 - Complemento CSS</a></li>
+                </ul>
+            </li>
+
+            <li class="has-submenu">
+                <a href="#" class="submenu-title">Modulo 03 - Ferramentas 👇</a>
+                <ul class="submenu">
+                    <li><a href="caputti.html">Módulo 03 - Como Baixar</a></li>
+                    <li><a href="raul.html">Módulo 03 - VS Code</a></li>
+                </ul>
+            </li>
+            
             <li><a href="index02.html">Modulo 04 - Aula HTML/CSS/GPT</a></li>
             <li><a href="index04.html">Modulo 05 - Atividade</a></li>
-        </ul>
         </ul>
     </div>
     <div class="overlay"></div>
     <img src="" alt="">
     
+    <script>
+        // Seleciona todos os itens da lista que têm a classe 'has-submenu'
+        const menuItems = document.querySelectorAll('.has-submenu');
 
-</body>
+        menuItems.forEach(item => {
+            // Adiciona um "ouvinte" de evento de clique a cada item principal
+            item.addEventListener('click', function(event) {
+                // Impede que o clique seja considerado se o usuário clicar
+                // diretamente em um link dentro do submenu aninhado.
+                if (!event.target.closest('.submenu a')) {
+                    // Impede o comportamento padrão (navegar para '#')
+                    event.preventDefault(); 
+                    
+                    // Alterna a classe 'submenu-open' no item principal (li)
+                    // que fará o CSS abrir ou fechar o submenu aninhado.
+                    this.classList.toggle('submenu-open');
+                }
+            });
+        });
+    </script>
+    </body>
 </html>
