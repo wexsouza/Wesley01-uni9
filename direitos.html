@@ -233,140 +233,34 @@ a:hover {
 a:active {
   color: rgb(239, 239, 228);
 }
-
-/* ======= TÍTULO WELCOME ======= */
-.welcome {
-  color: #fff;
-  font-size: 30px;
-  font-family: Arial, Helvetica, sans-serif;
+.rodape {
+  background-color: rgba(25, 25, 25, 0.95);
+  color: #e0e0e0;
   text-align: center;
-  margin-top: 90px;
-  text-shadow:
-    0 0 8px rgba(0, 149, 255, 0.836),
-    0 0 16px rgba(0, 149, 255, 0.742);
-  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 20px 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: "Segoe UI", Arial, sans-serif;
+  backdrop-filter: blur(8px);
+  line-height: 1.6;
 }
 
-/* ======= SEÇÃO DE VÍDEO E CARD DE PERFIL (FLEXBOX) ======= */
-.video-e-info-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 30px; 
-    padding-top: 20px;
-    padding-bottom: 20px;
-    flex-wrap: wrap; /* Para responsividade */
-}
 
-.video-wrapper {
-    /* Mantenha o vídeo responsivo, se necessário */
-    max-width: 800px; /* Largura máxima do vídeo */
-}
-
-.video-wrapper iframe {
-    max-width: 100%; /* Garante que não ultrapasse a largura do container */
-    height: 500px;
-    /* Adicione um media query se quiser ajustar a altura em mobile */
-}
-
-/* Estilo do Card de Perfil */
-.profile-card {
-    background: linear-gradient(135deg, rgba(2, 144, 245, 0.1), rgba(99, 6, 6, 0.1));
-    border: 1px solid rgba(0, 150, 255, 0.2);
-    border-radius: 15px;
-    padding: 20px;
-    width: 280px; 
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    text-align: center;
-    backdrop-filter: blur(5px);
-    font-size: 20;
-}
-
-.profile-pic {
-    width: 120px; 
-    height: 120px;
-    border-radius: 50%; 
-    object-fit: cover; 
-    border: 3px solid rgba(0, 150, 255, 0.6); 
-    margin-bottom: 15px;
-    box-shadow: 0 0 10px rgba(0, 150, 255, 0.4);
-}
-
-.profile-name {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 24px;
-    color: #fff;
-    margin-bottom: 8px;
-    text-shadow: 0 0 5px rgba(0, 150, 255, 0.5);
-}
-
-.profile-bio {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 20px;
-    line-height: 1.5;
-}
-
-.instagram-link {
-    display: inline-flex; 
-    align-items: center;
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 16px;
-    transition: color 0.3s ease;
-}
-
-.instagram-link:hover {
-    color: #f77737;
-}
-
-.instagram-icon {
-    width: 24px;
-    height: 24px;
-    margin-right: 8px;
-    border-radius: 5px;
-}
-/* === FIM DO CSS DE VÍDEO E CARD === */
-
-
-/* OUTROS ELEMENTOS (MANTIDOS) */
-.paragrafi {
-  text-align: center;
-  color: rgb(236, 234, 241);
-}
-.frase {
-  color: rgb(207, 92, 92);
-}
 </style>
 
 </head>
 <body>    
 
     <div class="welcome">
-        <h2>HTML CSS GPT</h2>
-    </div>
-
-    <div class="video-e-info-container">
-        
-        <div class="video-wrapper">
-<iframe width="800" height="500" src="https://www.youtube.com/embed/Tq2QvZqqXXU?si=7aAX6SrApVYZpSPe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>        </div>
-
-        <div class="profile-card">
-            <img src="wesleycpa.jpeg" alt="Foto de Perfil" class="profile-pic">
-            <h2>Aluno:<br>Wesley Souza</h2>
-            <p class="profile-bio">HTML, CSS, GPT. <a href="https://www.ev.org.br/cursos/crie-um-site-simples-usando-html-css-e-javascript"><br><br><button>Curso gratuito Fundação Bradesco</button></a></p>
-            <a href="https://www.instagram.com/wexsantos/" target="_blank" class="instagram-link">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="instagram-icon">
-                Instagram
-            </a>
-        </div>
-    </div>
-    <div class="paragrafi">
-        <p class="frase"> <p class="frase"><br><br>Veja o resultado final <br><a href="https://empresa-neglape.vercel.app/"><br>Click here</a></p> 🚀</p>
-    </div>
-    
+        <footer class="rodape">
+  <p>
+    © 2025 — Todos os direitos reservados.<br>
+    Esta plataforma foi desenvolvida exclusivamente para fins acadêmicos, vinculada ao curso de graduação da faculdade.<br>
+    As imagens e vídeos aqui exibidos, incluindo as dos alunos e do autor, possuem autorização de uso restrita ao contexto educacional deste projeto.<br>
+    É proibida a reprodução, cópia, distribuição ou utilização do conteúdo sem prévia autorização dos responsáveis.
+  </p>
+</footer>
+</div>
     <input type="checkbox" name="" id="menu">
     <label for="menu" class="botao">
         <span></span>
