@@ -20,7 +20,7 @@ body {
   color: white;
 }
 
-/* ======= MENU HAMBURGUER E BOTÃO (MANTIDOS) ======= */
+/* ======= MENU HAMBURGUER E BOTÃO ======= */
 #menu {
   display: none;
 }
@@ -47,7 +47,7 @@ body {
   transition: 0.8s;
 }
 
-/* ======= MENU LATERAL MODERNO (COMECO) (MANTIDOS) ======= */
+/* ======= MENU LATERAL ======= */
 .comeco {
   position: fixed;
   top: 0;
@@ -75,7 +75,6 @@ body {
   letter-spacing: 1px;
 }
 
-/* ITENS DE MENU E SUBMENUS (MANTIDOS) */
 .comeco ul li {
   list-style: none;
   padding: 12px 20px;
@@ -114,22 +113,21 @@ body {
 .comeco ul li.active-parent { border-left: 3px solid rgb(245, 203, 73); background: rgba(245, 203, 73, 0.05); }
 .comeco ul li.active-parent .submenu { max-height: 500px; }
 
-
-/* SCROLLBAR, OVERLAY E ANIMAÇÕES (MANTIDOS) */
 .comeco::-webkit-scrollbar { width: 6px; }
 .comeco::-webkit-scrollbar-thumb { background: rgb(236, 237, 237); border-radius: 4px; }
 .comeco::-webkit-scrollbar-thumb:hover { background: rgba(234, 236, 238, 0.6); }
+
 .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); opacity: 0; pointer-events: none; transition: opacity 0.3s ease; z-index: 1000; }
 #menu:checked ~ .comeco { left: 0; }
 #menu:checked ~ .overlay { opacity: 1; pointer-events: auto; }
 #menu:checked + .botao span:nth-child(1) { transform: rotate(45deg) translateY(13px); background: white; }
 #menu:checked + .botao span:nth-child(2) { opacity: 0; }
 #menu:checked + .botao span:nth-child(3) { transform: rotate(-45deg) translateY(-13px); background: white; }
+
 a { color: rgb(243, 236, 236); text-decoration: none; }
 a:hover { color: rgb(236, 229, 229); }
 a:active { color: rgb(239, 239, 228); }
 
-/* TÍTULO WELCOME (ADAPTADO) */
 .welcome {
   color: #fff;
   font-size: 30px;
@@ -142,17 +140,15 @@ a:active { color: rgb(239, 239, 228); }
   font-weight: 700;
 }
 
-/* OUTROS ELEMENTOS (MANTIDOS) */
 .paragrafi {
   text-align: center;
   color: rgb(236, 234, 241);
-  padding: 0 50px; /* Adiciona padding para o texto não colar nas bordas */
+  padding: 0 50px;
 }
 
-/* === NOVO CSS PARA CONTEÚDO (Módulo HTML) === */
 .content-section {
     max-width: 900px;
-    margin: 40px auto; /* Centraliza o conteúdo e afasta do topo/rodapé */
+    margin: 40px auto;
     padding: 20px;
 }
 
@@ -166,7 +162,7 @@ a:active { color: rgb(239, 239, 228); }
 }
 
 .info-card h3 {
-    color: rgb(245, 203, 73); /* Cor de destaque para o título */
+    color: rgb(245, 203, 73);
     border-bottom: 2px solid rgba(245, 203, 73, 0.4);
     padding-bottom: 5px;
     margin-top: 0;
@@ -186,13 +182,12 @@ a:active { color: rgb(239, 239, 228); }
     overflow-x: auto;
     font-family: 'Courier New', monospace;
     font-size: 14px;
-    color: #a9f0ff; /* Cor clara para o código */
+    color: #a9f0ff;
 }
 </style>
-
 </head>
-<body>    
 
+<body>    
     <div class="welcome">
         <h2>🌐 Reforçando, o que é HTML?</h2>
     </div>
@@ -200,46 +195,30 @@ a:active { color: rgb(239, 239, 228); }
     <div class="content-section">
         
         <div class="info-card">
-            <h3>Você já parou para pensar como um site aparece na tela do computador ou do celular?
-Como o navegador (como o Google Chrome, o Safari ou o Firefox) sabe onde colocar o texto, a imagem, o botão e as cores?
+            <h3>Você já parou para pensar como um site aparece na tela do computador ou do celular?</h3>
+            <p>Como o navegador (como o Google Chrome, o Safari ou o Firefox) sabe onde colocar o texto, a imagem, o botão e as cores? Pois é! Tudo isso começa com uma linguagem chamada <strong>HTML</strong>.</p>
 
-Pois é! Tudo isso começa com uma linguagem chamada HTML.</h3>
-            <p>HTML é uma sigla que vem do inglês HyperText Markup Language.
-Traduzindo, significa “Linguagem de Marcação de Hipertexto”.
+            <p>HTML é uma sigla que vem do inglês <em>HyperText Markup Language</em>. Traduzindo, significa “Linguagem de Marcação de Hipertexto”. Parece complicado, né? Mas é simples: o HTML é o jeito que usamos para ensinar o computador a montar uma página.</p>
 
-Parece complicado, né? Mas não é tanto assim. Vamos entender palavra por palavra:
+            <p>📘 <strong>Linguagem</strong>: é a forma de comunicação. As pessoas usam palavras, os computadores usam códigos.</p>
+            <p>🏷️ <strong>Marcação</strong>: quer dizer que a gente coloca “etiquetas” no texto, explicando o que cada parte é — um título, um parágrafo, um link...</p>
+            <p>🌐 <strong>Hipertexto</strong>: é o nome técnico para os links — os textos e botões clicáveis que te levam para outro lugar na internet.</p>
 
-Linguagem: é um jeito de se comunicar. As pessoas usam palavras, mas os computadores usam códigos.
-Então o HTML é uma linguagem que o computador entende para montar uma página da web.
+            <p>Em resumo: o HTML é como um conjunto de instruções que dizem ao navegador o que deve aparecer na tela e em qual ordem.</p>
 
-Marcação: quer dizer que a gente coloca “marcas” ou “etiquetas” no texto para explicar o que cada parte é.
-Por exemplo, uma marca diz “aqui começa o título” e outra diz “aqui começa um parágrafo”.
+            <h4>🧩 Como o HTML funciona</h4>
+            <p>Pense no HTML como o esqueleto de um site. Assim como o corpo humano precisa de ossos para ficar de pé, o site precisa de HTML para existir. Sem ele, o navegador não teria ideia do que mostrar.</p>
 
-Hipertexto: é o nome bonito que damos para os links, ou seja, os textos e botões que você clica e te levam para outro lugar da internet.
+            <p>Mas o HTML não trabalha sozinho: o <strong>CSS</strong> é quem dá estilo (cores, tamanhos e formas), e o <strong>JavaScript</strong> é quem dá movimento e inteligência.</p>
 
-Então, resumindo: HTML é uma forma de escrever instruções para que o navegador saiba o que mostrar e como mostrar.
+            <ul>
+              <li>HTML é o <strong>corpo</strong> do site.</li>
+              <li>CSS é a <strong>roupa</strong> e as <strong>cores</strong>.</li>
+              <li>JavaScript é o <strong>cérebro</strong>.</li>
+            </ul>
 
-🧩 Como o HTML funciona
-
-Pense no HTML como o esqueleto de um site.
-Assim como o corpo humano precisa de ossos para se manter de pé, um site precisa de HTML para existir.
-Sem ele, o site seria invisível — o navegador não teria ideia do que mostrar.
-
-Mas só o esqueleto não basta, certo?
-O HTML mostra a estrutura (o que vai onde), mas quem deixa tudo bonito é o CSS, e quem faz as coisas funcionarem, como botões e animações, é o JavaScript.
-
-Por isso, podemos dizer que:
-
-O HTML é o corpo do site;
-
-O CSS é a roupa e as cores;
-
-E o JavaScript é o cérebro que faz tudo se mexer.
-
-🏷️ As “tags” — os blocos de construção do HTML
-
-O HTML é feito de tags (se lê “tégues”), que são como caixinhas mágicas com funções diferentes.
-Elas sempre ficam entre os sinais de menor e maior:</p>
+            <h4>🏷️ Estrutura básica do HTML</h4>
+            <p>O HTML usa “caixinhas” chamadas <strong>tags</strong> (lê-se “tégues”). Cada tag tem um nome e serve para uma função. Elas são escritas entre os sinais de menor e maior:</p>
             <div class="code-block">
                 &lt;!DOCTYPE html&gt;<br>
                 &lt;html lang="pt"&gt;<br>
@@ -256,39 +235,67 @@ Elas sempre ficam entre os sinais de menor e maior:</p>
 
         <div class="info-card">
             <h3>Tags de Texto Simples e Semântica</h3>
-            <p>Usar a tag correta não só organiza seu código, mas também ajuda o Google (SEO) e pessoas com deficiência visual (Acessibilidade).</p>
+            <p>As <strong>tags de texto</strong> são como instruções que dizem ao navegador o que cada parte da escrita representa. Elas ajudam a organizar, dar sentido e até melhorar a acessibilidade do site.</p>
+            <p>Usar as tags corretas é como montar um livro: há títulos, capítulos e parágrafos, e cada um tem seu lugar certo.</p>
+
             <ul>
-                <li><strong>&lt;p&gt;</strong>: Use para parágrafos de texto comum.</li>
-                <li><strong>&lt;h1&gt; a &lt;h6&gt;</strong>: Use apenas para títulos e subtítulos. **Nunca pule níveis** (Ex: Não vá de `<h1>` para `<h3>`).</li>
-                <li><strong>&lt;strong&gt;</strong>: Não use apenas para negrito. Use para dar **importância** a uma palavra.</li>
-                <li><strong>&lt;em&gt;</strong>: Não use apenas para itálico. Use para dar ênfase (o navegador "lê" com entonação).</li>
+              <li>
+                <strong>&lt;p&gt;</strong> — Cria um parágrafo de texto.
+                <div class="code-block">&lt;p&gt;Esse é um parágrafo de exemplo em HTML.&lt;/p&gt;</div>
+              </li>
+
+              <li>
+                <strong>&lt;h1&gt; a &lt;h6&gt;</strong> — São os títulos e subtítulos.
+                <p>&lt;h1&gt; é o título principal, e &lt;h2&gt; até &lt;h6&gt; são subtítulos.</p>
+                <div class="code-block">
+                  &lt;h1&gt;Título principal&lt;/h1&gt;<br>
+                  &lt;h2&gt;Subtítulo&lt;/h2&gt;<br>
+                  &lt;p&gt;Texto do parágrafo.&lt;/p&gt;
+                </div>
+              </li>
+
+              <li>
+                <strong>&lt;strong&gt;</strong> — Dá importância a uma palavra (não é só negrito).
+                <div class="code-block">&lt;p&gt;A água é &lt;strong&gt;essencial&lt;/strong&gt; à vida.&lt;/p&gt;</div>
+              </li>
+
+              <li>
+                <strong>&lt;em&gt;</strong> — Dá ênfase (não é só itálico).
+                <div class="code-block">&lt;p&gt;Eu &lt;em&gt;adoro&lt;/em&gt; programar!&lt;/p&gt;</div>
+              </li>
             </ul>
+
+            <p>Essas pequenas tags ajudam o navegador a “entender” o que está escrito, tornando o site mais organizado e acessível para todos.</p>
         </div>
 
         <div class="info-card">
             <h3>Links e Imagens (Os Elementos Chave)</h3>
-            <p>Os links e as imagens são fundamentais para o HTML. Lembre-se sempre destes atributos:</p>
-            <p><strong>Link: &lt;a&gt;</strong></p>
-            <div class="code-block">
-                &lt;a href="pagina.html" target="_blank"&gt;Clique Aqui&lt;/a&gt;
-            </div>
-            <ul>
-                <li>`href`: O destino do link.</li>
-                <li>`target="_blank"`: Abre o link em uma nova aba do navegador.</li>
-            </ul>
+            <p>Agora que você já sabe escrever textos com HTML, vamos falar sobre dois elementos muito importantes: os <strong>links</strong> e as <strong>imagens</strong>.</p>
 
-            <p><strong>Imagem: &lt;img&gt;</strong></p>
-            <div class="code-block">
-                &lt;img src="caminho/foto.jpg" alt="Descrição da Imagem"&gt;
-            </div>
+            <h4>🔗 Links (&lt;a&gt;)</h4>
+            <p>A tag &lt;a&gt; vem da palavra “anchor” (âncora). Ela cria um link que conecta uma página à outra.</p>
+            <div class="code-block">&lt;a href="pagina.html" target="_blank"&gt;Clique Aqui&lt;/a&gt;</div>
             <ul>
-                <li>`src`: O caminho (source) onde a imagem está salva.</li>
-                <li>`alt`: A **descrição obrigatória** da imagem. Ajuda a acessibilidade e o SEO.</li>
+              <li><strong>href</strong>: é o endereço do destino.</li>
+              <li><strong>target="_blank"</strong>: abre o link em uma nova aba.</li>
             </ul>
+            <p>Exemplo prático:</p>
+            <div class="code-block">&lt;a href="https://www.google.com" target="_blank"&gt;Ir para o Google&lt;/a&gt;</div>
+
+            <h4>🖼️ Imagens (&lt;img&gt;)</h4>
+            <p>A tag &lt;img&gt; insere uma imagem na página. Ela não tem fechamento.</p>
+            <div class="code-block">&lt;img src="caminho/foto.jpg" alt="Descrição da Imagem"&gt;</div>
+            <ul>
+              <li><strong>src</strong>: o endereço (ou caminho) da imagem.</li>
+              <li><strong>alt</strong>: o texto alternativo que descreve a imagem — importante para acessibilidade e SEO.</li>
+            </ul>
+            <p>Exemplo:</p>
+            <div class="code-block">&lt;img src="https://exemplo.com/logo.png" alt="Logotipo do site"&gt;</div>
+            <p>💡 <strong>Dica:</strong> sempre use o atributo “alt” com carinho, como se estivesse descrevendo a imagem para alguém que não pode vê-la.</p>
         </div>
     </div>
     
-    <input type="checkbox" name="" id="menu">
+    <input type="checkbox" id="menu">
     <label for="menu" class="botao">
         <span></span>
         <span></span>
@@ -313,68 +320,4 @@ Elas sempre ficam entre os sinais de menor e maior:</p>
             <a href="#" class="submenu-title">Módulo 02 - CSS Avançado 👇</a><br>
             <ul class="submenu"><br>
                 <li><a href="nath.html">Módulo 02 - CSS</a></li>
-                <li><a href="complementocss.html">Complemento CSS</a></li>
-            </ul>
-        </li>
-        
-        <li class="has-submenu"><br>
-            <a href="#" class="submenu-title">Módulo 03 - Ferramentas 👇</a><br>
-            <ul class="submenu">
-                <li><a href="caputti.html">Módulo 03 - Como Baixar</a></li>
-                <li><a href="raul.html">Módulo 03 - VS Code</a></li>
-            </ul>
-        </li>
-        
-        <li><a href="wesley.html">Módulo 04 - Aula HTML/CSS/GPT</a></li><br>
-        <li><a href="atividade.html">Módulo 05 - Atividade</a></li><br>
-        <li><a href="Formulario.html">🚀Formulario</a></li><br>
-        <li><a href="direitos.html">Direitos de Imagem e Propriedade Intelectual</a></li>
-    </ul>
-    </div>
-    <div class="overlay"></div>
-    <img src="" alt="">
-    
-    <div class="complementopag" style="text-align: center;">
-    <p class="profile-bio"> Clique aqui para ler mais<a target="_blank" href="https://www.devmedia.com.br/introducao-ao-visual-studio-code/34418"><br><br><button>Click aqui</button></a></p>
-
-    </div>
-    
-    <script>
-        // Lógica de Destaque do Link Ativo (Atualizada para este arquivo)
-        function highlightActiveLink() {
-            // Se o nome do arquivo for diferente de 'complemento_html.html', mude aqui.
-            const currentPath = window.location.pathname.split('/').pop() || 'complemento_html.html';
-
-            document.querySelectorAll('.comeco a').forEach(link => {
-                const linkPath = link.getAttribute('href').split('/').pop();
-                
-                if (linkPath === currentPath) {
-                    link.classList.add('active'); 
-                    const parentLi = link.closest('.has-submenu');
-                    if (parentLi) {
-                        parentLi.classList.add('active-parent');
-                        parentLi.classList.add('submenu-open'); 
-                    }
-                }
-            });
-        }
-
-        // Lógica de Abrir/Fechar Submenu (MANTIDA)
-        function setupSubmenuToggle() {
-            const submenuTitles = document.querySelectorAll('.submenu-title');
-            submenuTitles.forEach(title => {
-                title.addEventListener('click', function(event) {
-                    event.preventDefault(); 
-                    const parentLi = this.closest('.has-submenu');
-                    parentLi.classList.toggle('submenu-open');
-                });
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            highlightActiveLink();
-            setupSubmenuToggle();
-        });
-    </script>
-    </body>
-</html>
+                <li><a href="complementocss.html
